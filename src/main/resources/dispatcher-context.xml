@@ -1,0 +1,88 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-2.0.xsd">
+
+
+    <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+
+    <!-- When changing these property locations then update the SystemInfoController accordingly -->
+    <context:property-placeholder location="classpath:application.properties,file:${catalina.base}/conf/pmt.application.properties"
+                                  system-properties-mode="OVERRIDE"
+                                  ignore-resource-not-found="true"/>
+
+    <util:properties id="versionProperties" location="classpath:META-INF/version.txt"/>
+
+    <context:annotation-config/>
+
+    <!-- Scan only @Controllers since core beans are scanned within the root context -->
+    <context:component-scan base-package="ch.zhaw.schilram.sem_hib.web"/>
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <mvc:annotation-driven conversion-service="conversionService">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!--<mvc:view-controller path="/app/" view-name="redirect:/time_recordings"/>-->
+
+    <!--<mvc:view-controller path="/app/login" view-name="session/login"/>-->
+    <!--<mvc:view-controller path="/login" view-name="session/login"/>-->
+
+    <mvc:annotation-driven conversion-service="conversionService"/>
+
+
+    <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
+        <property name="converters">
+            <set>
+                <!--<bean class="ch.zhaw.schilram.sem_hib.web.converter.StringToCategoryConverter"/>-->
+            </set>
+        </property>
+        <property name="registerDefaultFormatters" value="true"/>
+    </bean>
+
+    <mvc:resources mapping="/static/**" location="/static/"/>
+
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/views/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView"/>
+
+
+    <!-- JDK Exception mappings (maps to view names) -->
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.NullPointerException">500</prop>
+                <prop key="java.lang.IllegalArgumentException">500</prop>
+                <prop key="java.lang.IllegalStateException">500</prop>
+                <prop key="ch.cloudguard.pmt.service.NotFoundException">404</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!-- i18n message bean -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          p:basenames="classpath:messages"
+          p:fallbackToSystemLocale="false"
+          p:useCodeAsDefaultMessage="true"
+          p:fileEncodings="UTF-8"
+          p:defaultEncoding="UTF-8" p:cacheSeconds="60"/>
+
+    <!-- Bootstraps JSR-303 validation and exposes it through Spring's Validator interface -->
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+
+
+</beans>

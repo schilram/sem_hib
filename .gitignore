@@ -1,3 +1,11 @@
+# Jetbrains IntelliJ
+*/.idea/
+/.idea/*
+*/.idea/*
+*.iml
+
+
+# LaTeX
 *.acn
 *.acr
 *.alg
