@@ -6,4 +6,5 @@ package ch.zhaw.schilram.sem_hib.model;
 public interface Uniqueness {
 
     Long getId();
+
 }
