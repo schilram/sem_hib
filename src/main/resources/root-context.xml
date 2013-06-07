@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <!-- When changeing these property locations then update the SystemInfoController accordingly -->
-    <context:property-placeholder location="classpath:application.properties,file:${catalina.base}/conf/pmt.application.properties"
+    <context:property-placeholder location="classpath:application.properties,file:${catalina.base}/conf/sem_hib.application.properties"
                                   system-properties-mode="OVERRIDE"
                                   ignore-resource-not-found="true"/>
 

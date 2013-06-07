@@ -17,7 +17,7 @@
     <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 
     <!-- When changing these property locations then update the SystemInfoController accordingly -->
-    <context:property-placeholder location="classpath:application.properties,file:${catalina.base}/conf/pmt.application.properties"
+    <context:property-placeholder location="classpath:application.properties,file:${catalina.base}/conf/sem_hib.application.properties"
                                   system-properties-mode="OVERRIDE"
                                   ignore-resource-not-found="true"/>
 
@@ -67,7 +67,7 @@
                 <prop key="java.lang.NullPointerException">500</prop>
                 <prop key="java.lang.IllegalArgumentException">500</prop>
                 <prop key="java.lang.IllegalStateException">500</prop>
-                <prop key="ch.cloudguard.pmt.service.NotFoundException">404</prop>
+                <prop key="ch.zhaw.schilram.sem_hib.service.NotFoundException">404</prop>
             </props>
         </property>
     </bean>

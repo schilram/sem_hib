@@ -21,6 +21,12 @@ public class Ingredient implements Uniqueness, Serializable {
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     private Flavour flavour;
 
+    public Ingredient(final String name, final String description, final Flavour flavour) {
+        this.name = name;
+        this.description = description;
+        this.flavour = flavour;
+    }
+
     public String getDescription() {
         return description;
     }
