@@ -100,8 +100,7 @@ public class IngredientController {
     public String delete(@PathVariable("id") final Long id) {
         LOGGER.debug("Deleting ingredient with id: {}", id);
 
-        final Ingredient deleted = service.deleteById(id);
-        LOGGER.debug("Deleted ingredient: {}", deleted);
+        service.deleteById(id);
 
         return createRedirectViewPath("/ingredients/");
     }

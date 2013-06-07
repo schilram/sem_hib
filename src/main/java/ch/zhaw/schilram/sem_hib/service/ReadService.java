@@ -6,12 +6,15 @@ import java.util.List;
 /**
  * @author rschilling
  */
-public interface GenericReadService<T extends Serializable> {
+public interface ReadService<T , ID extends Serializable> {
 
     /**
      * @return Number of T object entities
      */
     long count();
+
+
+    boolean exists(ID id);
 
     /**
      * @return A list of {@link T} objects (if any); otherwise return <code>null</code>
@@ -23,6 +26,6 @@ public interface GenericReadService<T extends Serializable> {
      *
      * @return The T object (if any); otherwise return <code>null</code>
      */
-    T findOne(Long id);
+    T findOne(ID id);
 
 }

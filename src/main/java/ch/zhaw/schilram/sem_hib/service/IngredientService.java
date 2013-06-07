@@ -1,14 +1,11 @@
 package ch.zhaw.schilram.sem_hib.service;
 
 import ch.zhaw.schilram.sem_hib.model.Ingredient;
-import ch.zhaw.schilram.sem_hib.web.dto.IngredientDto;
-
-import java.util.List;
 
 /**
  * @author rschilling
  */
-public interface IngredientService extends GenericCrudService<Ingredient> {
+public interface IngredientService extends CrudService<Ingredient, Long> {
 
 //    /**
 //     * Adds a new ingredient.
@@ -17,13 +14,13 @@ public interface IngredientService extends GenericCrudService<Ingredient> {
 //     */
 //    Ingredient add(IngredientDto added);
 
-    /**
-     * Deletes an ingredient.
-     * @param id    The id of the deleted ingredient.
-     * @return  The deleted ingredient.
-     * @throws NotFoundException    if a ingredient is not found with the given id.
-     */
-    Ingredient deleteById(Long id) throws NotFoundException;
+//    /**
+//     * Deletes an ingredient.
+//     * @param id    The id of the deleted ingredient.
+//     * @return  The deleted ingredient.
+//     * @throws NotFoundException    if a ingredient is not found with the given id.
+//     */
+//    Ingredient deleteById(Long id) throws NotFoundException;
 
 //    /**
 //     * Finds all ingredients.
