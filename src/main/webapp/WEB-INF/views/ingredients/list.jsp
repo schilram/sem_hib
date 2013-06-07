@@ -6,20 +6,20 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Ingredients</title>
+    <title>Zutaten</title>
 
     <link rel="stylesheet" type="text/css" media="all" href="<c:url value="/static/bootstrap/css/bootstrap.css" />"/>
 </head>
 <body>
 
-<h1>Ingredients</h1>
+<h1>Zutaten</h1>
 
 <table>
 	<tr>
 		<td width="50">Id</td>
 		<td width="150">Name</td>
-		<td width="450">Description</td>
-		<td width="100">Flavour</td>
+		<td width="450">Beschreibung</td>
+		<td width="100">Geschmack</td>
 	</tr>
 	<c:forEach items="${ingredients}" var="i">
 		<tr>
