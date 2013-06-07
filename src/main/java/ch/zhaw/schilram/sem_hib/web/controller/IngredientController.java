@@ -25,7 +25,7 @@ import java.util.Locale;
  */
 @Controller
 @RequestMapping("/ingredients")
-public class IngredientController {
+public class IngredientController extends AbstractController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IngredientController.class);
 
@@ -67,14 +67,14 @@ public class IngredientController {
     }
 
     /**
-     * Processes the submit of add ingredient form.
+     * Processes the submit of save ingredient form.
      * @param dto   The form object.
      * @param result    The binding result describing whether there is validation errors.
      * @param attributes    The attributes used to when the request is redirected.
      * @return  A redirect view  name to the ingredient view.
      */
     @RequestMapping(value = "/save", method = RequestMethod.PUT)
-    public String saveIngredient(@Valid @ModelAttribute("ingredient") final IngredientDto dto, final BindingResult result, final RedirectAttributes attributes) {
+    public String save(@Valid @ModelAttribute("ingredient") final IngredientDto dto, final BindingResult result, final RedirectAttributes attributes) {
 
         LOGGER.debug("Putting ingredient with information: {}", dto);
 
@@ -122,15 +122,4 @@ public class IngredientController {
         return "ingredients/ingredient";
     }
 
-    /**
-     * Creates a redirect view path.
-     * @param requestMapping    The request mapping of target controller method.
-     * @return  The created redirect view path.
-     */
-    private String createRedirectViewPath(final String requestMapping) {
-        final StringBuilder redirectViewPath = new StringBuilder();
-        redirectViewPath.append("redirect:");
-        redirectViewPath.append(requestMapping);
-        return redirectViewPath.toString();
-    }
 }
