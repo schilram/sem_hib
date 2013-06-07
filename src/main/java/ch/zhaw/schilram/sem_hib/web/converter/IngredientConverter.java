@@ -16,7 +16,7 @@ public class IngredientConverter {
 
     public static Ingredient convertForSave(final IngredientDto dto) {
 
-        LOGGER.debug("converting IngredientDto to Ingredient");
+        LOGGER.debug("converting DTO to Ingredient");
 
         final Ingredient model = new Ingredient();
 
@@ -30,7 +30,7 @@ public class IngredientConverter {
 
     public static IngredientDto convertToDto(final Ingredient model) {
 
-        LOGGER.debug("converting IngredientDto to Ingredient");
+        LOGGER.debug("converting Ingredient to DTO");
 
         final IngredientDto dto = new IngredientDto();
 
