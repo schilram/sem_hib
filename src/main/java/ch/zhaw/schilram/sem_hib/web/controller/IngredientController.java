@@ -2,7 +2,8 @@ package ch.zhaw.schilram.sem_hib.web.controller;
 
 import ch.zhaw.schilram.sem_hib.model.Ingredient;
 import ch.zhaw.schilram.sem_hib.service.IngredientService;
-import ch.zhaw.schilram.sem_hib.web.dto.IngredientDTO;
+import ch.zhaw.schilram.sem_hib.web.converter.IngredientConverter;
+import ch.zhaw.schilram.sem_hib.web.dto.IngredientDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
@@ -36,6 +35,11 @@ public class IngredientController {
     @Resource
     private MessageSource messageSource;
 
+    /**
+     * Shows the ingredients page
+     * @param model The model
+     * @return  The name of the ingredients view
+     */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String list(final Model model) {
 
@@ -56,10 +60,10 @@ public class IngredientController {
 
         LOGGER.debug("Showing add ingredient page");
 
-        final IngredientDTO formObject = new IngredientDTO();
+        final IngredientDto formObject = new IngredientDto();
         model.addAttribute("ingredient", formObject);
 
-        return "ingredients/add";
+        return "ingredients/ingredient";
     }
 
     /**
@@ -69,47 +73,54 @@ public class IngredientController {
      * @param attributes    The attributes used to when the request is redirected.
      * @return  A redirect view  name to the ingredient view.
      */
-    @RequestMapping(value = "/add", method = RequestMethod.PUT)
-    public String addEmployee(@Valid @ModelAttribute("ingredient") final IngredientDTO dto, final BindingResult result, final RedirectAttributes attributes) {
+    @RequestMapping(value = "/save", method = RequestMethod.PUT)
+    public String saveIngredient(@Valid @ModelAttribute("ingredient") final IngredientDto dto, final BindingResult result, final RedirectAttributes attributes) {
 
-        LOGGER.debug("Adding new ingredient with information: {}", dto);
+        LOGGER.debug("Putting ingredient with information: {}", dto);
 
         if (result.hasErrors()) {
             LOGGER.debug("Form was submitted with validation errors. Rendering form view.");
             return "ingredients/list";
         }
 
-        final Ingredient added = service.add(dto);
-        LOGGER.debug("Added ingredient with information: {}", added);
+        final Ingredient toSave = IngredientConverter.convertForSave(dto);
+        final Ingredient saved = service.save(toSave);
 
-        attributes.addAttribute("id", added.getId());
-        addFeedbackMessage(attributes, "ingredient with name={}, description={}, flavour={} added", added.getName(), added.getDescription(), added.getFlavour());
+        LOGGER.debug("Saved ingredient with information: {}", saved);
 
         return createRedirectViewPath("/ingredients/");
     }
 
     /**
-     * Adds a flash feedback message.
-     * @param model The model which contains the message.
-     * @param code  The code used to fetch the localized message.
-     * @param params    The params of the message.
+     * Deletes an ingredient and shows the ingredient list view
+     * @param id    id of ingredient to delete
+     * @return  A redirect view name to the ingredients list view
      */
-    private void addFeedbackMessage(final RedirectAttributes model, final String code, final Object... params) {
-        LOGGER.debug("Adding feedback message with code: {} and params: {}", code, params);
-        final String localizedFeedbackMessage = getMessage(code, params);
-        LOGGER.debug("Localized message is: {}", localizedFeedbackMessage);
-        model.addFlashAttribute("feedbackMessage", localizedFeedbackMessage);
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String delete(@PathVariable("id") final Long id) {
+        LOGGER.debug("Deleting ingredient with id: {}", id);
+
+        final Ingredient deleted = service.deleteById(id);
+        LOGGER.debug("Deleted ingredient: {}", deleted);
+
+        return createRedirectViewPath("/ingredients/");
     }
 
     /**
-     * Gets a message from the message source.
-     * @param code  The message code.
-     * @param params    The params of the message.
-     * @return  The localized message.
+     * Shows the ingredient page.
+     * @param model The model.
+     * @return  The name of the ingredient view.
      */
-    private String getMessage(final String code, final Object... params) {
-        final Locale locale = LocaleContextHolder.getLocale();
-        return messageSource.getMessage(code, params, locale);
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String edit(@PathVariable("id") final Long id, final Model model) {
+
+        LOGGER.debug("Showing edit ingredient page");
+
+        final Ingredient toEdit = service.findOne(id);
+        final IngredientDto formObject = IngredientConverter.convertToDto(toEdit);
+        model.addAttribute("ingredient", formObject);
+
+        return "ingredients/ingredient";
     }
 
     /**

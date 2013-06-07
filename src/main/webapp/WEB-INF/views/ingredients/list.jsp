@@ -12,24 +12,49 @@
 </head>
 <body>
 
-<h1>Zutaten</h1>
+<h3>Zutaten</h3>
+<div class="row">
+    <div class="span12">
+        <table class="table table-striped">
+            <colgroup>
+                <col width="50">
+                <col width="150">
+                <col width="450">
+                <col width="100">
+                <col width="100">
+            </colgroup>
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Beschreibung</th>
+                <th>Geschmack</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${ingredients}" var="i">
+                <tr>
+                    <td><c:out value="${i.id}" /></td>
+                    <td><c:out value="${i.name}" /></td>
+                    <td><c:out value="${i.description}" /></td>
+                    <td><c:out value="${i.flavour}" /></td>
+                    <td>
+                        <a href="/ingredients/edit/${i.id}"><i class="icon-pencil">&nbsp;</i></a>&nbsp;&nbsp;
+                        <a href="/ingredients/delete/${i.id}"><i class="icon-trash">&nbsp;</i></a>&nbsp;&nbsp;
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
 
-<table>
-	<tr>
-		<td width="50">Id</td>
-		<td width="150">Name</td>
-		<td width="450">Beschreibung</td>
-		<td width="100">Geschmack</td>
-	</tr>
-	<c:forEach items="${ingredients}" var="i">
-		<tr>
-			<td><c:out value="${i.id}" /></td>
-			<td><c:out value="${i.name}" /></td>
-			<td><c:out value="${i.description}" /></td>
-			<td><c:out value="${i.flavour}" /></td>
-		</tr>
-	</c:forEach>
-</table>
+</div>
+
+<div class="form-actions">
+    <a href="/ingredients/add" class="btn btn-primary">Zutat Hinzufügen <i class="icon-plus icon-white"></i></a>
+</div>
+
 
 </body>
 </html>

@@ -6,9 +6,9 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * @author rschilling
  */
-public class IngredientDTO {
+public class IngredientDto {
 
-    private long id;
+    private Long id;
 
     @NotEmpty
     private String name;
@@ -17,11 +17,11 @@ public class IngredientDTO {
 
     private Flavour flavour;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(final long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 

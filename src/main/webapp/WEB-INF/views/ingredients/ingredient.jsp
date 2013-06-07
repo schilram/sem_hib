@@ -9,15 +9,26 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Neue Zutat</title>
+    <title>
+        <c:choose>
+            <c:when test="${ingredient.id != null}">Zutat editieren</c:when>
+            <c:otherwise>Neue Zutat</c:otherwise>
+        </c:choose>
+    </title>
 
     <link rel="stylesheet" type="text/css" media="all" href="<c:url value="/static/bootstrap/css/bootstrap.css" />"/>
 </head>
 <body>
 
-<h3>Neue Zutat</h3>
+<h3>
+    <c:choose>
+        <c:when test="${ingredient.id != null}">Zutat editieren</c:when>
+        <c:otherwise>Neue Zutat</c:otherwise>
+    </c:choose>
+</h3>
 
-<form:form action="/ingredients/add" method="put" commandName="ingredient" id="ingredient_form" cssClass="noprint">
+<form:form action="/ingredients/save" method="put" commandName="ingredient" id="ingredient_form" cssClass="noprint">
+    <form:hidden path="id"/>
 
     <div class="row">
         <div class="span4">
@@ -35,6 +46,7 @@
                 <div class="control-group <form:errors path="flavour">error</form:errors> ">
                     <form:label path="flavour" cssClass="control-label">Geschmack</form:label>
                     <form:select path="flavour" cssClass="input-xlarge">
+                        <form:option label=" - bitte wählen -" value=""></form:option>
                         <form:options />
                     </form:select>
                     <div class="help-block"><form:errors path="flavour"/></div>
@@ -45,7 +57,7 @@
 
     <div class="form-actions">
 
-        <button type="submit" value="Cancel" class="btn" id="cancel">Abbrechen</button>
+        <a href="/ingredients/" class="btn">Abbrechen</a>
 
         <button type="submit" class="btn btn-primary pull-right" id="submit">Speichern &nbsp
             <i class="icon-plus icon-white"></i>

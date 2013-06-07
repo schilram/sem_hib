@@ -22,14 +22,14 @@ public class Ingredient implements Uniqueness, Serializable {
     @Enumerated(EnumType.STRING)
     private Flavour flavour;
 
+    public Ingredient() {
+
+    }
+
     public Ingredient(final String name, final String description, final Flavour flavour) {
         this.name = name;
         this.description = description;
         this.flavour = flavour;
-    }
-
-    public Ingredient() {
-
     }
 
     public String getDescription() {
@@ -50,6 +50,10 @@ public class Ingredient implements Uniqueness, Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
     }
 
     public String getName() {
