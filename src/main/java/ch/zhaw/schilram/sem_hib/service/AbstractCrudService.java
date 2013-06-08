@@ -20,8 +20,6 @@ public abstract class AbstractCrudService<T, ID extends Serializable> implements
 
     @Override
     public void delete(final T persEntity) {
-        LOGGER.debug("deleting {} with information {}", persEntity.getClass().getSimpleName(), persEntity);
-
         getRepository().delete(persEntity);
     }
 

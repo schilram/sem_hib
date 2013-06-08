@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author rschilling
  */
 @Entity
-@Table(name = "INGREDIENT")
+@Table(name = "UNIT_OF_MEASURE")
 public class UnitOfMeasure implements Uniqueness, Serializable {
 
     @Id
