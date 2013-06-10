@@ -27,7 +27,7 @@ public class RecipeDto {
         ingredients = new ArrayList<>();
     }
 
-    public RecipeDto(Long id, String name, String description, Collection<RecipeIngredientDto> ingredients, String instructions) {
+    public RecipeDto(final Long id, final String name, final String description, final Collection<RecipeIngredientDto> ingredients, final String instructions) {
         this.id = id;
         this.name = name;
         this.description = description;

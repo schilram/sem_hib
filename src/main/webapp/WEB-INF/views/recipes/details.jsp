@@ -64,7 +64,7 @@
 <textarea rows="20" style="width: 750px">${recipe.instructions}</textarea>
 
     <div class="form-actions">
-        <a href="/recipes/" class="btn">Zurück</a>
+        <a href="/recipes/" class="btn">Zu allen Rezepten</a>
     </div>
 
 </body>
