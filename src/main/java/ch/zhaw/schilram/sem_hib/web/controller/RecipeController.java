@@ -8,10 +8,7 @@ import ch.zhaw.schilram.sem_hib.service.IngredientService;
 import ch.zhaw.schilram.sem_hib.service.RecipeIngredientService;
 import ch.zhaw.schilram.sem_hib.service.RecipeService;
 import ch.zhaw.schilram.sem_hib.service.UnitOfMeasureService;
-import ch.zhaw.schilram.sem_hib.web.converter.IngredientConverter;
 import ch.zhaw.schilram.sem_hib.web.converter.RecipeConverter;
-import ch.zhaw.schilram.sem_hib.web.converter.RecipeIngredientConverter;
-import ch.zhaw.schilram.sem_hib.web.dto.IngredientDto;
 import ch.zhaw.schilram.sem_hib.web.dto.RecipeDto;
 import ch.zhaw.schilram.sem_hib.web.dto.RecipeIngredientDto;
 import org.slf4j.Logger;
@@ -31,7 +28,6 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -44,9 +40,6 @@ public class RecipeController extends AbstractController {
     private static final Logger LOGGER = LoggerFactory.getLogger(RecipeController.class);
 
     @Autowired
-    private RecipeService service;
-
-    @Autowired
     RecipeIngredientService recipeIngredientService;
 
     @Autowired
@@ -55,24 +48,11 @@ public class RecipeController extends AbstractController {
     @Autowired
     UnitOfMeasureService uomService;
 
+    @Autowired
+    private RecipeService service;
+
     @Resource
     private MessageSource messageSource;
-
-
-    /**
-     * Shows the recipes page
-     * @param model The model
-     * @return  The name of the recipes view
-     */
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String list(final Model model) {
-
-        LOGGER.debug("Showing recipes list");
-        final List<Recipe> recipes = service.findAll();
-
-        model.addAttribute("recipes", recipes);
-        return "recipes/list";
-    }
 
     /**
      * Shows the add recipe page.
@@ -81,7 +61,6 @@ public class RecipeController extends AbstractController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(final Model model) {
-
         LOGGER.debug("Showing add recipe page");
 
         final List<Ingredient> ingredients = ingredientService.findAll();
@@ -108,7 +87,6 @@ public class RecipeController extends AbstractController {
      */
     @RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
     public String add(final Model model, @PathVariable("id") final Long id) {
-
         LOGGER.debug("Showing add recipe page with new row");
 
         final List<Ingredient> ingredients = ingredientService.findAll();
@@ -137,7 +115,6 @@ public class RecipeController extends AbstractController {
      */
     @RequestMapping(value = "/save", method = RequestMethod.PUT)
     public String addIngredient(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
-
         LOGGER.debug("save recipe");
 
         if (result.hasErrors()) {
@@ -150,25 +127,23 @@ public class RecipeController extends AbstractController {
         return createRedirectViewPath("/recipes/");
     }
 
-    private void persist(final RecipeDto dto) {
+    private Recipe persist(final RecipeDto dto) {
         // Persist Recipe
         final Recipe toSave = RecipeConverter.convertForSave(dto);
         final Recipe saved = service.save(toSave);
 
         // Persist RecipeIngredients
-//        final Collection<RecipeIngredient> savedRecipeIngredients = new ArrayList<>();
-//        for (RecipeIngredient recipeIngredient : toSave.getIngredients()) {
-//            if (recipeIngredient.getUom() != null && recipeIngredient.getIngredient() != null) {
-//                recipeIngredient.setRecipe(saved);
-//                final RecipeIngredient savedRecipeIngredient = recipeIngredientService.save(recipeIngredient);
-//                savedRecipeIngredients.add(savedRecipeIngredient);
-//            }
-//        }
-//        // save recipe again with all RecipeIngredients
-//        saved.setIngredients(savedRecipeIngredients);
-//        service.save(saved);
-    }
+        final Collection<RecipeIngredient> savedRecipeIngredients = new ArrayList<>();
+        for (RecipeIngredient recipeIngredient : saved.getIngredients()) {
+            recipeIngredient.setRecipe(saved);
+            final RecipeIngredient savedRecipeIngredient = recipeIngredientService.save(recipeIngredient);
+            savedRecipeIngredients.add(savedRecipeIngredient);
+        }
+        // save recipe again with all RecipeIngredients
+        saved.setIngredients(savedRecipeIngredients);
 
+        return service.save(saved);
+    }
 
     /**
      * Processes the submit of add Ingredient on recipe form.
@@ -179,32 +154,11 @@ public class RecipeController extends AbstractController {
      */
     @RequestMapping(value = "/save", method = RequestMethod.PUT, params = "addRow")
     public String addRow(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
-
         LOGGER.debug("Adding row to recipe");
 
-        persist(dto);
+        final Recipe added = persist(dto);
 
-        return createRedirectViewPath("/recipes/add/" + dto.getId());
-    }
-
-    /**
-     * Processes the submit of add Ingredient on recipe form.
-     * @param dto   The form object.
-     * @param result    The binding result describing whether there is validation errors.
-     * @param attributes    The attributes used to when the request is redirected.
-     * @return  A redirect view  name to the recipe view.
-     */
-    @RequestMapping(value = "/save", method = RequestMethod.PUT, params = "removeRow")
-    public String removeRow(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
-
-//        LOGGER.debug("Remove row from recipe");
-//
-//        Collection<RecipeIngredientDto> recipeIngredients = dto.getIngredients();
-//        recipeIngredients.re
-//
-//        persist(dto);
-
-        return createRedirectViewPath("/recipes/add/" + dto.getId());
+        return createRedirectViewPath("/recipes/add/" + added.getId());
     }
 
 //    /**
@@ -253,7 +207,6 @@ public class RecipeController extends AbstractController {
      */
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String edit(@PathVariable("id") final Long id, final Model model) {
-
         LOGGER.debug("Showing edit ingredient page");
 
         final List<Ingredient> ingredients = ingredientService.findAll();
@@ -267,6 +220,39 @@ public class RecipeController extends AbstractController {
         model.addAttribute("uom", uom);
 
         return "recipes/recipe";
+    }
+
+    /**
+     * Shows the recipes page
+     * @param model The model
+     * @return  The name of the recipes view
+     */
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String list(final Model model) {
+        LOGGER.debug("Showing recipes list");
+        final List<Recipe> recipes = service.findAll();
+
+        model.addAttribute("recipes", recipes);
+        return "recipes/list";
+    }
+
+    /**
+     * Processes the submit of add Ingredient on recipe form.
+     * @param dto   The form object.
+     * @param result    The binding result describing whether there is validation errors.
+     * @param attributes    The attributes used to when the request is redirected.
+     * @return  A redirect view  name to the recipe view.
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.PUT, params = "removeRow")
+    public String removeRow(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
+//        LOGGER.debug("Remove row from recipe");
+//
+//        Collection<RecipeIngredientDto> recipeIngredients = dto.getIngredients();
+//        recipeIngredients.re
+//
+//        persist(dto);
+
+        return createRedirectViewPath("/recipes/add/" + dto.getId());
     }
 
 }
