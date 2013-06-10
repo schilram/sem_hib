@@ -134,7 +134,7 @@ public class RecipeController extends AbstractController {
 
         // Persist RecipeIngredients
         final Collection<RecipeIngredient> savedRecipeIngredients = new ArrayList<>();
-        for (RecipeIngredient recipeIngredient : saved.getIngredients()) {
+        for (RecipeIngredient recipeIngredient : toSave.getIngredients()) {
             recipeIngredient.setRecipe(saved);
             final RecipeIngredient savedRecipeIngredient = recipeIngredientService.save(recipeIngredient);
             savedRecipeIngredients.add(savedRecipeIngredient);
