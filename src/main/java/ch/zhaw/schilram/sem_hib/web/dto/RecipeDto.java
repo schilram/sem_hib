@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public class RecipeDto {
 

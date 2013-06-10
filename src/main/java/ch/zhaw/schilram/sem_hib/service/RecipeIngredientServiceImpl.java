@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 @Service
 public class RecipeIngredientServiceImpl extends AbstractCrudService<RecipeIngredient, Long> implements RecipeIngredientService {

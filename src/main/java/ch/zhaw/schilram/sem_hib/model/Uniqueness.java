@@ -1,7 +1,7 @@
 package ch.zhaw.schilram.sem_hib.model;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public interface Uniqueness {
 

@@ -5,7 +5,7 @@ import ch.zhaw.schilram.sem_hib.model.Ingredient;
 import java.util.List;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public class SearchForm {
 

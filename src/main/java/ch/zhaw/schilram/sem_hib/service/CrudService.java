@@ -3,7 +3,7 @@ package ch.zhaw.schilram.sem_hib.service;
 import java.io.Serializable;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public interface CrudService<T, ID extends Serializable> extends ReadService<T, ID> {
 

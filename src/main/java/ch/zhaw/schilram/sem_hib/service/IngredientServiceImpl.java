@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 @Service
 public class IngredientServiceImpl extends AbstractCrudService<Ingredient, Long> implements IngredientService {

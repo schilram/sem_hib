@@ -5,7 +5,7 @@ import ch.zhaw.schilram.sem_hib.model.RecipeIngredient;
 import org.springframework.data.jpa.repository.Query;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public interface RecipeIngredientService extends CrudService<RecipeIngredient, Long> {
 

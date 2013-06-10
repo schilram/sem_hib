@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public interface UnitOfMeasureRepository extends JpaRepository<UnitOfMeasure, Long> {
 }

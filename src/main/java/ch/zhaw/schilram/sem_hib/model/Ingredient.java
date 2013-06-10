@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 @Entity
 @Table(name = "INGREDIENT")

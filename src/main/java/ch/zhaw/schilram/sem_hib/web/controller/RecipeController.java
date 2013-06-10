@@ -31,7 +31,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 @Controller
 @RequestMapping("/recipes")

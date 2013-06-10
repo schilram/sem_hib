@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public interface ReadService<T , ID extends Serializable> {
 

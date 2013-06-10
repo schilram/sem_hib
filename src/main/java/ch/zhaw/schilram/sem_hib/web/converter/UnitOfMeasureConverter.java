@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Class for converting UnitOfMeasureDto to UnitOfMeasure and vice versa.
  *
- * @author rschilling
+ * @author schilram
  */
 public class UnitOfMeasureConverter {
 

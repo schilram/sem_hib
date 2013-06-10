@@ -6,7 +6,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 @Entity
 @Table(name = "FLAVOUR")

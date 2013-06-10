@@ -4,7 +4,7 @@ import ch.zhaw.schilram.sem_hib.model.Flavour;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public class UnitOfMeasureDto {
 

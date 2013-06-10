@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Class for converting RecipeDto to Recipe and vice versa.
  *
- * @author rschilling
+ * @author schilram
  */
 public class RecipeConverter {
 

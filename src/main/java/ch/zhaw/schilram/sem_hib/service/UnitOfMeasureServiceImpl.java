@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 @Service
 public class UnitOfMeasureServiceImpl extends AbstractCrudService<UnitOfMeasure, Long> implements UnitOfMeasureService {

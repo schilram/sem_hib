@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public abstract class AbstractCrudService<T, ID extends Serializable> implements CrudService<T, ID> {
 

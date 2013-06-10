@@ -26,7 +26,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 @Controller
 @RequestMapping("/uom")

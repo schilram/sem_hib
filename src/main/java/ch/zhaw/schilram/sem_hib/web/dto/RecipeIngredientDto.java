@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import java.util.List;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public class RecipeIngredientDto {
 

@@ -7,7 +7,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 @Component
 public class StringToUnitOfMeasureConverter implements Converter<String, UnitOfMeasure> {

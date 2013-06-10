@@ -3,7 +3,7 @@ package ch.zhaw.schilram.sem_hib.service;
 import ch.zhaw.schilram.sem_hib.model.Recipe;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public interface RecipeService extends CrudService<Recipe, Long> {
 

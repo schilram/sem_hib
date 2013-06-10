@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Class for converting IngredientDto to Ingredient and vice versa.
  *
- * @author rschilling
+ * @author schilram
  */
 public class IngredientConverter {
 

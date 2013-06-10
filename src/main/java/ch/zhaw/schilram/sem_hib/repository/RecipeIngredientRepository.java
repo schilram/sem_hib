@@ -9,7 +9,7 @@ import javax.management.Query;
 
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public interface RecipeIngredientRepository extends JpaRepository<RecipeIngredient, Long> {
 

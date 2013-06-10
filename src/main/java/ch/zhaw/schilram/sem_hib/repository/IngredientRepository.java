@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
 }

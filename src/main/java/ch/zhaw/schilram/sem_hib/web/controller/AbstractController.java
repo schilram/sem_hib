@@ -1,7 +1,7 @@
 package ch.zhaw.schilram.sem_hib.web.controller;
 
 /**
- * @author rschilling
+ * @author schilram
  */
 public abstract class AbstractController {
 

@@ -15,7 +15,7 @@ import java.util.Collections;
 /**
  * Class for converting RecipeIngredientDto to RecipeIngredient and vice versa.
  *
- * @author rschilling
+ * @author schilram
  */
 public class RecipeIngredientConverter {
 
