@@ -1,6 +1,5 @@
 package ch.zhaw.schilram.sem_hib.web.dto;
 
-import ch.zhaw.schilram.sem_hib.model.Flavour;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**

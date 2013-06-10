@@ -1,9 +1,7 @@
 package ch.zhaw.schilram.sem_hib.service;
 
-import ch.zhaw.schilram.sem_hib.model.Recipe;
 import ch.zhaw.schilram.sem_hib.model.RecipeIngredient;
 import ch.zhaw.schilram.sem_hib.repository.RecipeIngredientRepository;
-import ch.zhaw.schilram.sem_hib.repository.RecipeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

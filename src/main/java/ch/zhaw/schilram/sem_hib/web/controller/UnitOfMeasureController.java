@@ -1,12 +1,8 @@
 package ch.zhaw.schilram.sem_hib.web.controller;
 
-import ch.zhaw.schilram.sem_hib.model.Ingredient;
 import ch.zhaw.schilram.sem_hib.model.UnitOfMeasure;
-import ch.zhaw.schilram.sem_hib.service.IngredientService;
 import ch.zhaw.schilram.sem_hib.service.UnitOfMeasureService;
-import ch.zhaw.schilram.sem_hib.web.converter.IngredientConverter;
 import ch.zhaw.schilram.sem_hib.web.converter.UnitOfMeasureConverter;
-import ch.zhaw.schilram.sem_hib.web.dto.IngredientDto;
 import ch.zhaw.schilram.sem_hib.web.dto.UnitOfMeasureDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

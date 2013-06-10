@@ -3,11 +3,9 @@ package ch.zhaw.schilram.sem_hib.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author schilram
@@ -16,7 +14,10 @@ public abstract class AbstractCrudService<T, ID extends Serializable> implements
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractCrudService.class);
 
-    abstract <R extends JpaRepository<T, ID>> R getRepository();
+    @Override
+    public long count() {
+        return getRepository().count();
+    }
 
     @Override
     public void delete(final T persEntity) {
@@ -34,16 +35,6 @@ public abstract class AbstractCrudService<T, ID extends Serializable> implements
     }
 
     @Override
-    public T save(final T persEntity) {
-        return getRepository().save(persEntity);
-    }
-
-    @Override
-    public long count() {
-        return getRepository().count();
-    }
-
-    @Override
     public boolean exists(final ID id) {
         return getRepository().exists(id);
     }
@@ -57,4 +48,12 @@ public abstract class AbstractCrudService<T, ID extends Serializable> implements
     public T findOne(final ID id) {
         return getRepository().findOne(id);
     }
+
+    abstract <R extends JpaRepository<T, ID>> R getRepository();
+
+    @Override
+    public T save(final T persEntity) {
+        return getRepository().save(persEntity);
+    }
+
 }

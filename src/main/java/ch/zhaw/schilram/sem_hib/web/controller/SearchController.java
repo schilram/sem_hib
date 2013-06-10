@@ -82,9 +82,9 @@ public class SearchController extends AbstractController {
 
         for (Recipe recipe : recipes) {
             int score = 0;
-            Collection<RecipeIngredient> recipeIngredients = recipe.getIngredients();
+            final Collection<RecipeIngredient> recipeIngredients = recipe.getIngredients();
             for (RecipeIngredient recipeIngredient: recipeIngredients) {
-                Ingredient ingredient = recipeIngredient.getIngredient();
+                final Ingredient ingredient = recipeIngredient.getIngredient();
                 if (ingredient.equals(form.getIngredient1())
                     || ingredient.equals(form.getIngredient2())
                     || ingredient.equals(form.getIngredient3())) {
@@ -102,6 +102,7 @@ public class SearchController extends AbstractController {
                 case 3:
                     list3hit.add(recipe);
                     break;
+                default:
             }
         }
 

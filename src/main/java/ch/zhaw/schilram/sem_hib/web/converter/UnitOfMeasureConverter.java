@@ -1,8 +1,6 @@
 package ch.zhaw.schilram.sem_hib.web.converter;
 
-import ch.zhaw.schilram.sem_hib.model.Ingredient;
 import ch.zhaw.schilram.sem_hib.model.UnitOfMeasure;
-import ch.zhaw.schilram.sem_hib.web.dto.IngredientDto;
 import ch.zhaw.schilram.sem_hib.web.dto.UnitOfMeasureDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,9 +1,7 @@
 package ch.zhaw.schilram.sem_hib.web.converter;
 
 import ch.zhaw.schilram.sem_hib.model.Recipe;
-import ch.zhaw.schilram.sem_hib.model.RecipeIngredient;
 import ch.zhaw.schilram.sem_hib.web.dto.RecipeDto;
-import ch.zhaw.schilram.sem_hib.web.dto.RecipeIngredientDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

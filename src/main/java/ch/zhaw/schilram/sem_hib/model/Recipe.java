@@ -3,7 +3,6 @@ package ch.zhaw.schilram.sem_hib.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @author schilram
@@ -67,17 +66,30 @@ public class Recipe implements Uniqueness, Serializable {
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Recipe)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Recipe)) {
+            return false;
+        }
 
         final Recipe recipe = (Recipe) o;
 
-        if (description != null ? !description.equals(recipe.description) : recipe.description != null) return false;
-        if (!id.equals(recipe.id)) return false;
-        if (ingredients != null ? !ingredients.equals(recipe.ingredients) : recipe.ingredients != null) return false;
-        if (instructions != null ? !instructions.equals(recipe.instructions) : recipe.instructions != null)
+        if (description != null ? !description.equals(recipe.description) : recipe.description != null) {
             return false;
-        if (name != null ? !name.equals(recipe.name) : recipe.name != null) return false;
+        }
+        if (!id.equals(recipe.id)) {
+            return false;
+        }
+        if (ingredients != null ? !ingredients.equals(recipe.ingredients) : recipe.ingredients != null) {
+            return false;
+        }
+        if (instructions != null ? !instructions.equals(recipe.instructions) : recipe.instructions != null) {
+            return false;
+        }
+        if (name != null ? !name.equals(recipe.name) : recipe.name != null) {
+            return false;
+        }
 
         return true;
     }
@@ -91,4 +103,5 @@ public class Recipe implements Uniqueness, Serializable {
         result = 31 * result + (instructions != null ? instructions.hashCode() : 0);
         return result;
     }
+
 }

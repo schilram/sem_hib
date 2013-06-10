@@ -66,17 +66,31 @@ public class RecipeIngredient implements Uniqueness, Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof RecipeIngredient)) return false;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof RecipeIngredient)) {
+            return false;
+        }
 
-        RecipeIngredient that = (RecipeIngredient) o;
+        final RecipeIngredient that = (RecipeIngredient) o;
 
-        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
-        if (!id.equals(that.id)) return false;
-        if (ingredient != null ? !ingredient.equals(that.ingredient) : that.ingredient != null) return false;
-        if (recipe != null ? !recipe.equals(that.recipe) : that.recipe != null) return false;
-        if (uom != null ? !uom.equals(that.uom) : that.uom != null) return false;
+        if (amount != null ? !amount.equals(that.amount) : that.amount != null) {
+            return false;
+        }
+        if (!id.equals(that.id)) {
+            return false;
+        }
+        if (ingredient != null ? !ingredient.equals(that.ingredient) : that.ingredient != null) {
+            return false;
+        }
+        if (recipe != null ? !recipe.equals(that.recipe) : that.recipe != null) {
+            return false;
+        }
+        if (uom != null ? !uom.equals(that.uom) : that.uom != null) {
+            return false;
+        }
 
         return true;
     }

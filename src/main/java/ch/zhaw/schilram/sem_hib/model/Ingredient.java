@@ -64,16 +64,28 @@ public class Ingredient implements Uniqueness, Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Ingredient)) return false;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Ingredient)) {
+            return false;
+        }
 
-        Ingredient that = (Ingredient) o;
+        final Ingredient that = (Ingredient) o;
 
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (flavour != that.flavour) return false;
-        if (!id.equals(that.id)) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (description != null ? !description.equals(that.description) : that.description != null) {
+            return false;
+        }
+        if (flavour != that.flavour) {
+            return false;
+        }
+        if (!id.equals(that.id)) {
+            return false;
+        }
+        if (name != null ? !name.equals(that.name) : that.name != null) {
+            return false;
+        }
 
         return true;
     }

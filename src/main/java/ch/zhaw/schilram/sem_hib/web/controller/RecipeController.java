@@ -40,13 +40,13 @@ public class RecipeController extends AbstractController {
     private static final Logger LOGGER = LoggerFactory.getLogger(RecipeController.class);
 
     @Autowired
-    RecipeIngredientService recipeIngredientService;
+    private RecipeIngredientService recipeIngredientService;
 
     @Autowired
-    IngredientService ingredientService;
+    private IngredientService ingredientService;
 
     @Autowired
-    UnitOfMeasureService uomService;
+    private UnitOfMeasureService uomService;
 
     @Autowired
     private RecipeService service;

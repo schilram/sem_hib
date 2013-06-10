@@ -1,16 +1,12 @@
 package ch.zhaw.schilram.sem_hib.web.converter;
 
-import ch.zhaw.schilram.sem_hib.model.Ingredient;
 import ch.zhaw.schilram.sem_hib.model.RecipeIngredient;
-import ch.zhaw.schilram.sem_hib.web.dto.IngredientDto;
 import ch.zhaw.schilram.sem_hib.web.dto.RecipeIngredientDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import sun.plugin2.main.server.ResultID;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 /**
  * Class for converting RecipeIngredientDto to RecipeIngredient and vice versa.

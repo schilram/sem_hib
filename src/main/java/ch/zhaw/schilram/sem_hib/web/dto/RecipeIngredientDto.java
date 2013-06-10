@@ -2,9 +2,6 @@ package ch.zhaw.schilram.sem_hib.web.dto;
 
 import ch.zhaw.schilram.sem_hib.model.Ingredient;
 import ch.zhaw.schilram.sem_hib.model.UnitOfMeasure;
-import org.hibernate.validator.constraints.NotEmpty;
-
-import java.util.List;
 
 /**
  * @author schilram

@@ -7,18 +7,15 @@ import ch.zhaw.schilram.sem_hib.web.dto.IngredientDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.annotation.Resource;
+
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * @author schilram
@@ -31,9 +28,6 @@ public class IngredientController extends AbstractController {
 
     @Autowired
     private IngredientService service;
-
-    @Resource
-    private MessageSource messageSource;
 
     /**
      * Shows the ingredients page
