@@ -81,7 +81,7 @@ public class RecipeController extends AbstractController {
     }
 
     /**
-     * Shows the add recipe page.
+     * Shows the add recipe page (Adds a new RecipeIngredient).
      * @param model The model.
      * @return  The name of the add recipe view.
      */
@@ -104,6 +104,24 @@ public class RecipeController extends AbstractController {
         model.addAttribute("uom", uom);
 
         return "recipes/recipe";
+    }
+
+
+    /**
+     * Shows the recipe detail page.
+     * @param model The model.
+     * @return  The name of the recipe detail view.
+     */
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String details(final Model model, @PathVariable("id") final Long id) {
+        LOGGER.debug("Showing detail recipe for recipe with id: {}", id);
+
+        final Recipe recipe = service.findOne(id);
+        final RecipeDto formObject = RecipeConverter.convertToDto(recipe);
+
+        model.addAttribute("recipe", formObject);
+
+        return "recipes/details";
     }
 
     /**

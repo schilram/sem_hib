@@ -84,11 +84,9 @@
                         <td><form:select path="ingredients[${status.index}].uom" cssClass="input-small" items="${uom}" itemValue="id" itemLabel="key"/></td>
                         <td><form:select path="ingredients[${status.index}].ingredient" cssClass="input-large" items="${ingredients}" itemValue="id" itemLabel="name"/></td>
                         <td>
-                            <!--<button type="submit" class="btn" name="removeRow" id="removeRow_${i.id}"><i class="icon-trash" id="${i.id}"/></button>-->
                             <i class="icon-trash" id="${i.id}">
                                 <script type="text/javascript">
-                                    $('#${i.id}').click(function()
-                                    {
+                                    $('#${i.id}').click(function() {
                                         $(this).parents('tr').first().remove();
                                     });
 
@@ -125,41 +123,5 @@
     </div>
 </form:form>
 
-<%--<script type="text/javascript">--%>
-    <%--$(document).ready(function($)--%>
-    <%--{--%>
-        <%--$('#addRow').click(function()--%>
-        <%--{--%>
-            <%--addTableRow($('#ingredient_table'));--%>
-            <%--return false;--%>
-        <%--});--%>
-
-        <%--function addTableRow(table)--%>
-        <%--{--%>
-            <%--var $tr = $('#ingredient_table').find("tbody tr:last").clone();--%>
-
-            <%--// get the name attribute for the input and select fields--%>
-            <%--$tr.find("input,select").attr("name", function()--%>
-            <%--{--%>
-                <%--// create a unique name for the new field by incrementing--%>
-                <%--var n = parseInt(this.id.match(/[\d]+/));--%>
-                <%--n = n++;--%>
-                <%--this.id.replace(/[d]+/, n);--%>
-
-                <%--// and reset values--%>
-                <%--this.value--%>
-
-                <%--// repeat for id attributes--%>
-            <%--}).attr("id", function()--%>
-                <%--{--%>
-                    <%--var n = this.id.match(/[\d]+/) + 1;--%>
-                    <%--this.id.replace(/[d]+/, n);--%>
-                <%--});--%>
-
-            <%--// append the new row to the table--%>
-            <%--$('#ingredient_table').find("tbody tr:last").after($tr);--%>
-        <%--};--%>
-    <%--});--%>
-<%--</script>--%>
 </body>
 </html>

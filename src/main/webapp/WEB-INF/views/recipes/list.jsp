@@ -45,6 +45,7 @@
                     <td><c:out value="${i.name}" /></td>
                     <td><c:out value="${i.description}" /></td></a>
                     <td>
+                        <a href="/recipes/${i.id}"><i class="icon-zoom-in">&nbsp;</i></a>&nbsp;&nbsp;
                         <a href="/recipes/edit/${i.id}"><i class="icon-pencil">&nbsp;</i></a>&nbsp;&nbsp;
                         <a href="/recipes/delete/${i.id}"><i class="icon-trash">&nbsp;</i></a>&nbsp;&nbsp;
                     </td>
