@@ -79,57 +79,26 @@
                 <tbody>
                 <c:forEach items="${recipe.ingredients}" var="i" varStatus="status">
                     <tr>
-
-                        <%--<td>--%>
-                            <%--<spring:bind path="recipe.ingredients[${status.index}].amount">--%>
-                                <%--<input type="text" name="<%=status.getExpression()%>" value="<%=status.getValue()%>"/>--%>
-                            <%--</spring:bind>--%>
-                        <%--</td>--%>
-                        <%--<td>--%>
-                            <%--<spring:bind path="recipe.ingredients[${status.index}].uom">--%>
-                                <%--<select name="<%=status.getExpression()%>">--%>
-                                    <%--<c:forEach items="${uom}" var="u">--%>
-                                        <%--<c:set var="selectMe" value=""/>--%>
-                                        <%--<c:forEach items="${status.actualValue}" var="curValue">--%>
-                                            <%--<c:if test="${curValue == u.id}">--%>
-                                                <%--<c:set var="selectMe" value="selected"/>--%>
-                                            <%--</c:if>--%>
-                                        <%--</c:forEach>--%>
-                                    <%--</c:forEach>--%>
-                                <%--</select>--%>
-                                <%--<input type="text" name="<%=status.getExpression()%>" value="<%=status.getValue()%>"/>--%>
-                            <%--</spring:bind>--%>
-                        <%--</td>--%>
-                        <%--<td>--%>
-                            <%--<spring:bind path="recipe.ingredients[${status.index}].ingredient">--%>
-                                <%--<input type="text" name="<%=status.getExpression()%>" value="<%=status.getValue()%>"/>--%>
-                            <%--</spring:bind>--%>
-                        <%--</td>--%>
-
-
-                        <%--<td><c:out value="${i.id}" /></td>--%>
-                        <%--<td><c:out value="${i.amount}" /></td>--%>
-                        <%--<td><c:out value="${i.uom}" /></td>--%>
-                        <%--<td><c:out value="${i.ingredient}" /></td>--%>
-                        <%--<td>--%>
-                            <%--<a href="/recipes/delete/${i.id}"><i class="icon-trash">&nbsp;</i></a>&nbsp;&nbsp;--%>
-                        <%--</td>--%>
                         <form:hidden path="ingredients[${status.index}].id"/>
                         <td><form:input path="ingredients[${status.index}].amount" value="${i.amount}" cssClass="input-mini"/></td>
                         <td><form:select path="ingredients[${status.index}].uom" cssClass="input-small" items="${uom}" itemValue="id" itemLabel="key"/></td>
                         <td><form:select path="ingredients[${status.index}].ingredient" cssClass="input-large" items="${ingredients}" itemValue="id" itemLabel="name"/></td>
-
-
-                        <%--<td><input name="ingredients[${status.index}].amount" value="${i.amount}"></td>--%>
-                        <%--<td><input name="ingredients[${status.index}].uom" value="${i.uom.id}"></td>--%>
-                        <%--<td><input name="ingredients[${status.index}].ingredient" value="${i.ingredient.id}"></td>--%>
                         <td>
-                            <a href="/recipes/delete/${i.id}"><i class="icon-trash">&nbsp;</i></a>
+                            <i class="icon-trash" id="${i.id}">
+                                <script type="text/javascript">
+                                    $('#${i.id}').click(function()
+                                    {
+                                        $(this).parents('tr').first().remove();
+                                    });
+
+                                </script>
+                            </i>
                         </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
+            <%--<button id="addRow">Zeile Hinzufügen</button>--%>
             <button type="submit" class="btn" name="addRow" id="addRow">Zeile hinzufügen</button>
         </div>
     </div>
@@ -172,7 +141,8 @@
             <%--$tr.find("input,select").attr("name", function()--%>
             <%--{--%>
                 <%--// create a unique name for the new field by incrementing--%>
-                <%--var n = this.id.match(/[\d]+/) + 1;--%>
+                <%--var n = parseInt(this.id.match(/[\d]+/));--%>
+                <%--n = n++;--%>
                 <%--this.id.replace(/[d]+/, n);--%>
 
                 <%--// and reset values--%>

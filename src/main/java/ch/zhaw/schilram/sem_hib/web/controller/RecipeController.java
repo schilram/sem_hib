@@ -82,27 +82,45 @@ public class RecipeController extends AbstractController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(final Model model) {
 
-        LOGGER.debug("Showing add ingredient page");
+        LOGGER.debug("Showing add recipe page");
 
         final List<Ingredient> ingredients = ingredientService.findAll();
         final List<UnitOfMeasure> uom = uomService.findAll();
 
-        // dasdfasfda sdf //
-        List<RecipeIngredientDto> rid = new ArrayList<>();
-        RecipeIngredientDto d = new RecipeIngredientDto();
-        d.setAmount(2);
-        d.setUom(uom.get(0));
-        d.setIngredient(ingredients.get(0));
+        final List<RecipeIngredientDto> rid = new ArrayList<>();
+        final RecipeIngredientDto d = new RecipeIngredientDto();
         rid.add(d);
-        d = new RecipeIngredientDto();
-        d.setAmount(4);
-        d.setUom(uom.get(1));
-        d.setIngredient(ingredients.get(1));
         rid.add(d);
-        // asdlfkjalskdfj //
 
         final RecipeDto formObject = new RecipeDto();
-        formObject.setIngredients(rid); //
+        formObject.setIngredients(rid);
+        model.addAttribute("recipe", formObject);
+        model.addAttribute("ingredients", ingredients);
+        model.addAttribute("uom", uom);
+
+        return "recipes/recipe";
+    }
+
+    /**
+     * Shows the add recipe page.
+     * @param model The model.
+     * @return  The name of the add recipe view.
+     */
+    @RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
+    public String add(final Model model, @PathVariable("id") final Long id) {
+
+        LOGGER.debug("Showing add recipe page with new row");
+
+        final List<Ingredient> ingredients = ingredientService.findAll();
+        final List<UnitOfMeasure> uom = uomService.findAll();
+
+        final Recipe toEdit = service.findOne(id);
+        final RecipeDto formObject = RecipeConverter.convertToDto(toEdit);
+        final Collection<RecipeIngredientDto> dtos = formObject.getIngredients();
+        final RecipeIngredientDto dto = new RecipeIngredientDto();
+        dtos.add(dto);
+        formObject.setIngredients(dtos);
+
         model.addAttribute("recipe", formObject);
         model.addAttribute("ingredients", ingredients);
         model.addAttribute("uom", uom);
@@ -120,31 +138,35 @@ public class RecipeController extends AbstractController {
     @RequestMapping(value = "/save", method = RequestMethod.PUT)
     public String addIngredient(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
 
-        LOGGER.debug("Adding ingredient to recipe");
+        LOGGER.debug("save recipe");
 
         if (result.hasErrors()) {
             LOGGER.debug("Form was submitted with validation errors. Rendering form view.");
             return "recipes/recipe";
         }
+        persist(dto);
 
+
+        return createRedirectViewPath("/recipes/");
+    }
+
+    private void persist(final RecipeDto dto) {
         // Persist Recipe
         final Recipe toSave = RecipeConverter.convertForSave(dto);
         final Recipe saved = service.save(toSave);
 
         // Persist RecipeIngredients
-        final Collection<RecipeIngredient> savedRecipeIngredients = new ArrayList<>();
-        for (RecipeIngredient recipeIngredient : toSave.getIngredients()) {
-            recipeIngredient.setRecipe(saved);
-            final RecipeIngredient savedRecipeIngredient = recipeIngredientService.save(recipeIngredient);
-            savedRecipeIngredients.add(savedRecipeIngredient);
-        }
-        // save recipe again with all RecipeIngredients
-        saved.setIngredients(savedRecipeIngredients);
-        service.save(saved);
-
-
-
-        return createRedirectViewPath("/recipes/");
+//        final Collection<RecipeIngredient> savedRecipeIngredients = new ArrayList<>();
+//        for (RecipeIngredient recipeIngredient : toSave.getIngredients()) {
+//            if (recipeIngredient.getUom() != null && recipeIngredient.getIngredient() != null) {
+//                recipeIngredient.setRecipe(saved);
+//                final RecipeIngredient savedRecipeIngredient = recipeIngredientService.save(recipeIngredient);
+//                savedRecipeIngredients.add(savedRecipeIngredient);
+//            }
+//        }
+//        // save recipe again with all RecipeIngredients
+//        saved.setIngredients(savedRecipeIngredients);
+//        service.save(saved);
     }
 
 
@@ -158,26 +180,31 @@ public class RecipeController extends AbstractController {
     @RequestMapping(value = "/save", method = RequestMethod.PUT, params = "addRow")
     public String addRow(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
 
-        LOGGER.debug("Adding ingredient to recipe");
+        LOGGER.debug("Adding row to recipe");
 
-        // Persist Recipe
-        final Recipe toSave = RecipeConverter.convertForSave(dto);
-        final Recipe saved = service.save(toSave);
+        persist(dto);
 
-        // Persist RecipeIngredients
-        final Collection<RecipeIngredient> savedRecipeIngredients = new ArrayList<>();
-        for (RecipeIngredient recipeIngredient : toSave.getIngredients()) {
-            recipeIngredient.setRecipe(saved);
-            final RecipeIngredient savedRecipeIngredient = recipeIngredientService.save(recipeIngredient);
-            savedRecipeIngredients.add(savedRecipeIngredient);
-        }
-        // save recipe again with all RecipeIngredients
-        saved.setIngredients(savedRecipeIngredients);
-        service.save(saved);
+        return createRedirectViewPath("/recipes/add/" + dto.getId());
+    }
 
+    /**
+     * Processes the submit of add Ingredient on recipe form.
+     * @param dto   The form object.
+     * @param result    The binding result describing whether there is validation errors.
+     * @param attributes    The attributes used to when the request is redirected.
+     * @return  A redirect view  name to the recipe view.
+     */
+    @RequestMapping(value = "/save", method = RequestMethod.PUT, params = "removeRow")
+    public String removeRow(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
 
+//        LOGGER.debug("Remove row from recipe");
+//
+//        Collection<RecipeIngredientDto> recipeIngredients = dto.getIngredients();
+//        recipeIngredients.re
+//
+//        persist(dto);
 
-        return createRedirectViewPath("/recipes/edit/" + saved.getId());
+        return createRedirectViewPath("/recipes/add/" + dto.getId());
     }
 
 //    /**
@@ -206,9 +233,9 @@ public class RecipeController extends AbstractController {
 //    }
 
     /**
-     * Deletes an ingredient and shows the ingredient list view
-     * @param id    id of ingredient to delete
-     * @return  A redirect view name to the ingredients list view
+     * Deletes a recipe and shows the recipe list view
+     * @param id    id of recipe to delete
+     * @return  A redirect view name to the recipe list view
      */
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable("id") final Long id) {
@@ -234,25 +261,6 @@ public class RecipeController extends AbstractController {
 
         final Recipe toEdit = service.findOne(id);
         final RecipeDto formObject = RecipeConverter.convertToDto(toEdit);
-
-
-        // dasdfasfda sdf //
-        List<RecipeIngredientDto> rid = new ArrayList<>();
-        RecipeIngredientDto d = new RecipeIngredientDto();
-        for (RecipeIngredientDto i : formObject.getIngredients()) {
-            d = new RecipeIngredientDto(i.getId(), i.getAmount(), i.getUom(), i.getIngredient());
-            rid.add(d);
-        }
-//        d.setAmount(2);
-//        d.setUom(uom.get(0));
-//        d.setIngredient(ingredients.get(0));
-//        rid.add(d);
-//        d = new RecipeIngredientDto();
-//        d.setAmount(4);
-//        d.setUom(uom.get(1));
-//        d.setIngredient(ingredients.get(1));
-//        rid.add(d);
-        formObject.setIngredients(rid);// asdlfkjalskdfj //
 
         model.addAttribute("recipe", formObject);
         model.addAttribute("ingredients", ingredients);
