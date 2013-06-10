@@ -216,7 +216,7 @@ public class RecipeController extends AbstractController {
 
         service.deleteById(id);
 
-        return createRedirectViewPath("/ingredients/");
+        return createRedirectViewPath("/recipes/");
     }
 
     /**

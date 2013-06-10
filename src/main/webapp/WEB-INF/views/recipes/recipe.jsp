@@ -117,7 +117,7 @@
                         <form:hidden path="ingredients[${status.index}].id"/>
                         <td><form:input path="ingredients[${status.index}].amount" value="${i.amount}" cssClass="input-mini"/></td>
                         <td><form:select path="ingredients[${status.index}].uom" cssClass="input-small" items="${uom}" itemValue="id" itemLabel="key"/></td>
-                        <td><form:select path="ingredients[${status.index}].ingredient" cssClass="input-small" items="${ingredients}" itemValue="id" itemLabel="name"/></td>
+                        <td><form:select path="ingredients[${status.index}].ingredient" cssClass="input-large" items="${ingredients}" itemValue="id" itemLabel="name"/></td>
 
 
                         <%--<td><input name="ingredients[${status.index}].amount" value="${i.amount}"></td>--%>

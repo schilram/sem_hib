@@ -1,6 +1,7 @@
 package ch.zhaw.schilram.sem_hib.service;
 
 import ch.zhaw.schilram.sem_hib.model.Recipe;
+import ch.zhaw.schilram.sem_hib.model.RecipeIngredient;
 import ch.zhaw.schilram.sem_hib.repository.RecipeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +19,23 @@ public class RecipeServiceImpl extends AbstractCrudService<Recipe, Long> impleme
     @Autowired
     private RecipeRepository repository;
 
+    @Autowired
+    private RecipeIngredientService recipeIngredientService;
+
     @Override
-    RecipeRepository getRepository() {
+    public RecipeRepository getRepository() {
         return repository;
+    }
+
+    @Override
+    public void deleteById(final Long id) {
+        final Recipe toDelete = findOne(id);
+        
+        for (RecipeIngredient ri : toDelete.getIngredients()) {
+            recipeIngredientService.delete(ri);
+        }
+
+        repository.delete(id);
     }
 
 }
