@@ -107,29 +107,43 @@ public class RecipeController extends AbstractController {
     }
 
     /**
-     * Processes the submit of add Ingredient on recipe form.
+     * Processes the submit of addRow on recipe form.
      * @param dto   The form object.
      * @param result    The binding result describing whether there is validation errors.
      * @param attributes    The attributes used to when the request is redirected.
      * @return  A redirect view  name to the recipe view.
      */
-    @RequestMapping(value = "/save", method = RequestMethod.PUT)
-    public String addIngredient(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
-        LOGGER.debug("save recipe");
+    @RequestMapping(value = "/save", method = RequestMethod.PUT, params = "addRow")
+    public String addRow(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
+        LOGGER.debug("Adding row to recipe");
 
-        if (result.hasErrors()) {
-            LOGGER.debug("Form was submitted with validation errors. Rendering form view.");
-            return "recipes/recipe";
-        }
-        persist(dto);
+        final Recipe added = persist(dto);
 
-
-        return createRedirectViewPath("/recipes/");
+        return createRedirectViewPath("/recipes/add/" + added.getId());
     }
 
     private Recipe persist(final RecipeDto dto) {
-        // Persist Recipe
         final Recipe toSave = RecipeConverter.convertForSave(dto);
+
+        // if it's not a new Recipe delete any removed rows (RecipeIngredients)
+        if (dto.getId() != null) {
+            final Recipe old = service.findOne(dto.getId());
+
+            // delete removed RecipeIngredients
+            for (RecipeIngredient ori : old.getIngredients()) {
+                boolean removed = true;
+                for (RecipeIngredient nri : toSave.getIngredients()) {
+                    if (nri.getId() != null && nri.getId().equals(ori.getId())) {
+                        removed = false;
+                    }
+                }
+                if (removed) {
+                    recipeIngredientService.delete(ori);
+                }
+            }
+        }
+
+        // save Recipe to get an id
         final Recipe saved = service.save(toSave);
 
         // Persist RecipeIngredients
@@ -146,47 +160,6 @@ public class RecipeController extends AbstractController {
 
         return service.save(saved);
     }
-
-    /**
-     * Processes the submit of add Ingredient on recipe form.
-     * @param dto   The form object.
-     * @param result    The binding result describing whether there is validation errors.
-     * @param attributes    The attributes used to when the request is redirected.
-     * @return  A redirect view  name to the recipe view.
-     */
-    @RequestMapping(value = "/save", method = RequestMethod.PUT, params = "addRow")
-    public String addRow(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
-        LOGGER.debug("Adding row to recipe");
-
-        final Recipe added = persist(dto);
-
-        return createRedirectViewPath("/recipes/add/" + added.getId());
-    }
-
-//    /**
-//     * Processes the submit of save recipe form.
-//     * @param dto   The form object.
-//     * @param result    The binding result describing whether there is validation errors.
-//     * @param attributes    The attributes used to when the request is redirected.
-//     * @return  A redirect view  name to the recipe view.
-//     */
-//    @RequestMapping(value = "/save", method = RequestMethod.PUT)
-//    public String save(@Valid @ModelAttribute("recipe") final IngredientDto dto, final BindingResult result, final RedirectAttributes attributes) {
-//
-//        LOGGER.debug("Putting ingredient with information: {}", dto);
-//
-//        if (result.hasErrors()) {
-//            LOGGER.debug("Form was submitted with validation errors. Rendering form view.");
-//            return "ingredients/list";
-//        }
-//
-//        final Ingredient toSave = IngredientConverter.convertForSave(dto);
-//        final Ingredient saved = service.save(toSave);
-//
-//        LOGGER.debug("Saved ingredient with information: {}", saved);
-//
-//        return createRedirectViewPath("/ingredients/");
-//    }
 
     /**
      * Deletes a recipe and shows the recipe list view
@@ -239,22 +212,23 @@ public class RecipeController extends AbstractController {
     }
 
     /**
-     * Processes the submit of add Ingredient on recipe form.
+     * Processes the submit of save Recipe form.
      * @param dto   The form object.
      * @param result    The binding result describing whether there is validation errors.
      * @param attributes    The attributes used to when the request is redirected.
      * @return  A redirect view  name to the recipe view.
      */
-    @RequestMapping(value = "/save", method = RequestMethod.PUT, params = "removeRow")
-    public String removeRow(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
-//        LOGGER.debug("Remove row from recipe");
-//
-//        Collection<RecipeIngredientDto> recipeIngredients = dto.getIngredients();
-//        recipeIngredients.re
-//
-//        persist(dto);
+    @RequestMapping(value = "/save", method = RequestMethod.PUT)
+    public String save(final Model model, @Valid @ModelAttribute("recipe") final RecipeDto dto, final BindingResult result, final RedirectAttributes attributes) {
+        LOGGER.debug("save recipe");
 
-        return createRedirectViewPath("/recipes/add/" + dto.getId());
+        if (result.hasErrors()) {
+            LOGGER.debug("Form was submitted with validation errors. Rendering form view.");
+            return "recipes/recipe";
+        }
+        persist(dto);
+
+        return createRedirectViewPath("/recipes/");
     }
 
 }
