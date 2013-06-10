@@ -11,9 +11,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -48,6 +50,13 @@ public class SearchController extends AbstractController {
         final List<Ingredient> ingredients = ingredientService.findAll();
         final SearchForm searchForm = new SearchForm();
 
+//        Ingredient i = new Ingredient();
+//        List<Ingredient> searchList = new ArrayList<>();
+//        searchList.add(i);
+//        searchList.add(i);
+//        searchList.add(i);
+//        searchForm.setIngredients(searchList);
+
         model.addAttribute("searchForm", searchForm);
         model.addAttribute("ingredients", ingredients);
 
@@ -61,7 +70,7 @@ public class SearchController extends AbstractController {
      * @return  The name of the result view
      */
     @RequestMapping(value = "/result", method = RequestMethod.POST)
-    public String list(final Model model, @ModelAttribute("searchForm") final SearchForm form) {
+    public String list(final Model model, @ModelAttribute("searchForm") final SearchForm form, final BindingResult result, final RedirectAttributes attributes) {
 
         LOGGER.debug("Showing filtered Recipe list");
 
@@ -76,9 +85,9 @@ public class SearchController extends AbstractController {
             Collection<RecipeIngredient> recipeIngredients = recipe.getIngredients();
             for (RecipeIngredient recipeIngredient: recipeIngredients) {
                 Ingredient ingredient = recipeIngredient.getIngredient();
-                if (ingredient.getId().equals(form.getIngredient1().getId())
-                    || ingredient.getId().equals(form.getIngredient2().getId())
-                    || ingredient.getId().equals(form.getIngredient3().getId())) {
+                if (ingredient.equals(form.getIngredient1())
+                    || ingredient.equals(form.getIngredient2())
+                    || ingredient.equals(form.getIngredient3())) {
                     score++;
                 }
             }
