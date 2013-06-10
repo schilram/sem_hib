@@ -36,6 +36,20 @@
                         <%--</ul>--%>
                     <%--</li>--%>
 
+                    <%-- Rezepte --%>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Rezepte
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<c:url value="/recipes/"/>">Alle Rezepte</a></li>
+                            <li><a href="<c:url value="/recipes/add"/>">Neues Rezept erfassen</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="divider-vertical"></li>
+
                     <%-- Zutaten --%>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">

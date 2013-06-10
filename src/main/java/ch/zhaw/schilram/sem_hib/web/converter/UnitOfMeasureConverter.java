@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Class for converting IngredientDto to Ingredient and vice versa.
+ * Class for converting UnitOfMeasureDto to UnitOfMeasure and vice versa.
  *
  * @author rschilling
  */

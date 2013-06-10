@@ -47,7 +47,8 @@
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
         <property name="converters">
             <set>
-                <!--<bean class="ch.zhaw.schilram.sem_hib.web.converter.StringToCategoryConverter"/>-->
+                <bean class="ch.zhaw.schilram.sem_hib.web.converter.StringToIngredientConverter"/>
+                <bean class="ch.zhaw.schilram.sem_hib.web.converter.StringToUnitOfMeasureConverter"/>
             </set>
         </property>
         <property name="registerDefaultFormatters" value="true"/>

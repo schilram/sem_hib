@@ -18,7 +18,6 @@ public class Ingredient implements Uniqueness, Serializable {
 
     private String description;
 
-//    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Flavour flavour;
 
