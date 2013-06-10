@@ -84,6 +84,7 @@
                         <td><form:select path="ingredients[${status.index}].uom" cssClass="input-small" items="${uom}" itemValue="id" itemLabel="key"/></td>
                         <td><form:select path="ingredients[${status.index}].ingredient" cssClass="input-large" items="${ingredients}" itemValue="id" itemLabel="name"/></td>
                         <td>
+                            <!--<button type="submit" class="btn" name="removeRow" id="removeRow_${i.id}"><i class="icon-trash" id="${i.id}"/></button>-->
                             <i class="icon-trash" id="${i.id}">
                                 <script type="text/javascript">
                                     $('#${i.id}').click(function()
