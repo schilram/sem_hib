@@ -65,4 +65,30 @@ public class Recipe implements Uniqueness, Serializable {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Recipe)) return false;
+
+        final Recipe recipe = (Recipe) o;
+
+        if (description != null ? !description.equals(recipe.description) : recipe.description != null) return false;
+        if (!id.equals(recipe.id)) return false;
+        if (ingredients != null ? !ingredients.equals(recipe.ingredients) : recipe.ingredients != null) return false;
+        if (instructions != null ? !instructions.equals(recipe.instructions) : recipe.instructions != null)
+            return false;
+        if (name != null ? !name.equals(recipe.name) : recipe.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (ingredients != null ? ingredients.hashCode() : 0);
+        result = 31 * result + (instructions != null ? instructions.hashCode() : 0);
+        return result;
+    }
 }

@@ -65,4 +65,29 @@ public class RecipeIngredient implements Uniqueness, Serializable {
         this.uom = uom;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RecipeIngredient)) return false;
+
+        RecipeIngredient that = (RecipeIngredient) o;
+
+        if (amount != null ? !amount.equals(that.amount) : that.amount != null) return false;
+        if (!id.equals(that.id)) return false;
+        if (ingredient != null ? !ingredient.equals(that.ingredient) : that.ingredient != null) return false;
+        if (recipe != null ? !recipe.equals(that.recipe) : that.recipe != null) return false;
+        if (uom != null ? !uom.equals(that.uom) : that.uom != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + (amount != null ? amount.hashCode() : 0);
+        result = 31 * result + (uom != null ? uom.hashCode() : 0);
+        result = 31 * result + (ingredient != null ? ingredient.hashCode() : 0);
+        result = 31 * result + (recipe != null ? recipe.hashCode() : 0);
+        return result;
+    }
 }

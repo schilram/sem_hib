@@ -56,4 +56,27 @@ public class UnitOfMeasure implements Uniqueness, Serializable {
         this.name = name;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UnitOfMeasure)) return false;
+
+        UnitOfMeasure that = (UnitOfMeasure) o;
+
+        if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (!id.equals(that.id)) return false;
+        if (!key.equals(that.key)) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id.hashCode();
+        result = 31 * result + key.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
+    }
 }

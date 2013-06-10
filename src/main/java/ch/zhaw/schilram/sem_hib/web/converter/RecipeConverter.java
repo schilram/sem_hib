@@ -17,7 +17,6 @@ public class RecipeConverter {
     private static final Logger LOGGER = LoggerFactory.getLogger(RecipeConverter.class);
 
     public static Recipe convertForSave(final RecipeDto dto) {
-
         LOGGER.debug("converting DTO to Recipe");
 
         final Recipe model = new Recipe();
@@ -32,7 +31,6 @@ public class RecipeConverter {
     }
 
     public static RecipeDto convertToDto(final Recipe model) {
-
         LOGGER.debug("converting Recipe to DTO");
 
         final RecipeDto dto = new RecipeDto();
@@ -45,4 +43,5 @@ public class RecipeConverter {
 
         return dto;
     }
+
 }

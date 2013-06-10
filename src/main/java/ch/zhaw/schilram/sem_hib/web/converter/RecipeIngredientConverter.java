@@ -21,8 +21,17 @@ public class RecipeIngredientConverter {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RecipeIngredientConverter.class);
 
-    public static RecipeIngredient convertForSave(final RecipeIngredientDto dto) {
+    public static Collection<RecipeIngredient> convertCollectionForSave(final Collection<RecipeIngredientDto> dtos) {
+        final Collection<RecipeIngredient> modelCollection = new ArrayList<>();
+        for (RecipeIngredientDto dto : dtos) {
+            final RecipeIngredient model = convertForSave(dto);
+            modelCollection.add(model);
+        }
 
+        return modelCollection;
+    }
+
+    public static RecipeIngredient convertForSave(final RecipeIngredientDto dto) {
         LOGGER.debug("converting DTO to RecipeIngredient");
 
         final RecipeIngredient model = new RecipeIngredient();
@@ -35,8 +44,17 @@ public class RecipeIngredientConverter {
         return model;
     }
 
-    public static RecipeIngredientDto convertToDto(final RecipeIngredient model) {
+    public static Collection<RecipeIngredientDto> convertCollectionToDto(final Collection<RecipeIngredient> models) {
+        final Collection<RecipeIngredientDto> dtoCollection = new ArrayList<>();
+        for (RecipeIngredient model : models) {
+            final RecipeIngredientDto dto = convertToDto(model);
+            dtoCollection.add(dto);
+        }
 
+        return dtoCollection;
+    }
+
+    public static RecipeIngredientDto convertToDto(final RecipeIngredient model) {
         LOGGER.debug("converting RecipeIngredient to DTO");
 
         final RecipeIngredientDto dto = new RecipeIngredientDto();
@@ -49,23 +67,4 @@ public class RecipeIngredientConverter {
         return dto;
     }
 
-    public static Collection<RecipeIngredient> convertCollectionForSave(final Collection<RecipeIngredientDto> dtos) {
-        final Collection<RecipeIngredient> modelCollection = new ArrayList<>();
-        for (RecipeIngredientDto dto : dtos) {
-            RecipeIngredient model = convertForSave(dto);
-            modelCollection.add(model);
-        }
-
-        return modelCollection;
-    }
-
-    public static Collection<RecipeIngredientDto> convertCollectionToDto(final Collection<RecipeIngredient> models) {
-        final Collection<RecipeIngredientDto> dtoCollection = new ArrayList<>();
-        for (RecipeIngredient model : models) {
-            RecipeIngredientDto dto = convertToDto(model);
-            dtoCollection.add(dto);
-        }
-
-        return dtoCollection;
-    }
 }
