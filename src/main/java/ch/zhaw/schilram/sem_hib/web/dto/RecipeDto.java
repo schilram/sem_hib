@@ -1,12 +1,9 @@
 package ch.zhaw.schilram.sem_hib.web.dto;
 
-import ch.zhaw.schilram.sem_hib.model.Flavour;
-import ch.zhaw.schilram.sem_hib.model.RecipeIngredient;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @author rschilling
