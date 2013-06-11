@@ -13,7 +13,6 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
         <property name="packagesToScan" value="ch.zhaw.schilram.sem_hib.model"/>
-        <!--<property name="jpaDialect" value="${hibernate.dialect}"/>-->
         <property name="jpaPropertyMap">
             <map>
                 <entry key="hibernate.dialect" value="${hibernate.dialect}"/>

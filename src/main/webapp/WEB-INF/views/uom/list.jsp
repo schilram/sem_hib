@@ -25,7 +25,7 @@
     <div class="span12">
         <table class="table table-striped">
             <colgroup>
-                <col width="50">
+
                 <col width="100">
                 <col width="150">
                 <col width="450">
@@ -43,7 +43,6 @@
             <tbody>
             <c:forEach items="${unitsOfMeasure}" var="i">
                 <tr>
-                    <td><c:out value="${i.id}" /></td>
                     <td><c:out value="${i.key}" /></td>
                     <td><c:out value="${i.name}" /></td>
                     <td><c:out value="${i.description}" /></td>

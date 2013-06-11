@@ -33,7 +33,7 @@
 <h3>
     <c:choose>
         <c:when test="${unitOfMeasure.id != null}">Masseinheit editieren</c:when>
-        <c:otherwise>Masseinheit Zutat</c:otherwise>
+        <c:otherwise>Neue Masseinheit</c:otherwise>
     </c:choose>
 </h3>
 

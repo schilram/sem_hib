@@ -25,7 +25,6 @@
     <div class="span12">
         <table class="table table-striped">
             <colgroup>
-                <col width="50">
                 <col width="150">
                 <col width="550">
                 <col width="100">
@@ -40,10 +39,9 @@
             </thead>
             <tbody>
             <c:forEach items="${recipes}" var="i">
-                <tr><a href="/recipes/${i.id}">
-                    <td><c:out value="${i.id}" /></td>
+                <tr>
                     <td><c:out value="${i.name}" /></td>
-                    <td><c:out value="${i.description}" /></td></a>
+                    <td><c:out value="${i.description}" /></td>
                     <td>
                         <a href="/recipes/${i.id}"><i class="icon-zoom-in">&nbsp;</i></a>&nbsp;&nbsp;
                         <a href="/recipes/edit/${i.id}"><i class="icon-pencil">&nbsp;</i></a>&nbsp;&nbsp;
