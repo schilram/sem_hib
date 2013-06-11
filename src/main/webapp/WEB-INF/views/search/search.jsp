@@ -28,21 +28,6 @@
 <h3>Suche nach Rezepten mit Zutaten:</h3>
 
 <form:form action="/search/result" method="post" commandName="searchForm" id="search_form" cssClass="noprint">
-
-<%--<c:forEach items="${searchForm.ingredients}" var="i" varStatus="status">--%>
-    <%--<div class="row">--%>
-        <%--<div class="span4">--%>
-            <%--<div class="control-group <form:errors path="ingredients[${status.index}]">error</form:errors> ">--%>
-                <%--<form:label path="ingredients[${status.index}]" cssClass="control-label">Zutat 1</form:label>--%>
-                <%--<form:select path="ingredients[${status.index}]" cssClass="input-xlarge">--%>
-                    <%--<form:option value="" label="-- auswählen --"/>--%>
-                    <%--<form:options items="${ingredients}" itemValue="id" itemLabel="name"/>--%>
-                <%--</form:select>--%>
-                <%--<div class="help-block"><form:errors path="ingredients[${status.index}]"/></div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</c:forEach>--%>
     <div class="row">
         <div class="span4">
             <div class="control-group <form:errors path="ingredient1">error</form:errors> ">
@@ -85,7 +70,7 @@
 
     <div class="form-actions">
 
-        <a href="/recipes/" class="btn">Zurück zur Liste</a>
+        <a href="<c:url value="/recipes/"/>" class="btn">Zurück zur Liste</a>
 
         <button type="submit" class="btn btn-primary pull-right" id="submit">Suchen</button>
 

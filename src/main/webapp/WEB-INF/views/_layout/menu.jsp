@@ -62,7 +62,7 @@
                     <li class="divider-vertical"></li>
 
                     <%-- Suche --%>
-                    <li><a href="/search/">Suche</a></li>
+                    <li><a href="<c:url value="/search/"/>">Suche</a></li>
                     <li class="divider-vertical"></li>
 
                 </ul>
