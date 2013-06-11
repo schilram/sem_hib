@@ -29,7 +29,7 @@
 <h3>Rezept Verwalung</h3>
 <table>
     <colgroup>
-        <col width="150">
+        <col width="200">
         <col width="150">
     </colgroup>
     <tr>
