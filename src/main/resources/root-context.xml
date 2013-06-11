@@ -19,8 +19,6 @@
     <!-- Activates various annotations to be detected in bean classes -->
     <context:annotation-config/>
 
-    <!--<import resource="security-context.xml"/>-->
-    <!--<import resource="acl-context.xml"/>-->
     <import resource="datasource-context.xml"/>
 
     <context:component-scan base-package="ch.zhaw.schilram.sem_hib.service"/>

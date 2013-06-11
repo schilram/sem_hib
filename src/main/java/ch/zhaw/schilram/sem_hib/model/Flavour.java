@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Table(name = "FLAVOUR")
 public enum Flavour implements Uniqueness, Serializable {
 
-    SALTY(1L), SWEET(2L), SOUR(3L), BITTER(4L), UMAMI(5L);
+    SALZIG(1L), SUESS(2L), SAUER(3L), BITTER(4L), UMAMI(5L);
 
     @Id
     private Long id;

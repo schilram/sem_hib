@@ -36,13 +36,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <!--<mvc:view-controller path="/app/" view-name="redirect:/time_recordings"/>-->
-
-    <!--<mvc:view-controller path="/app/login" view-name="session/login"/>-->
-    <!--<mvc:view-controller path="/login" view-name="session/login"/>-->
-
     <mvc:annotation-driven conversion-service="conversionService"/>
-
 
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
         <property name="converters">
@@ -61,29 +55,8 @@
           p:prefix="/WEB-INF/views/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView"/>
 
 
-    <!-- JDK Exception mappings (maps to view names) -->
-    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <prop key="java.lang.NullPointerException">500</prop>
-                <prop key="java.lang.IllegalArgumentException">500</prop>
-                <prop key="java.lang.IllegalStateException">500</prop>
-                <prop key="ch.zhaw.schilram.sem_hib.service.NotFoundException">404</prop>
-            </props>
-        </property>
-    </bean>
-
-
-    <!-- i18n message bean -->
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
-          p:basenames="classpath:messages"
-          p:fallbackToSystemLocale="false"
-          p:useCodeAsDefaultMessage="true"
-          p:fileEncodings="UTF-8"
-          p:defaultEncoding="UTF-8" p:cacheSeconds="60"/>
-
     <!-- Bootstraps JSR-303 validation and exposes it through Spring's Validator interface -->
-    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+    <!--<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>-->
 
 
 </beans>
