@@ -128,7 +128,7 @@
 
 <div class="form-actions">
     <a href="<c:url value="/recipes/"/>" class="btn">Alle Rezepte</a>
-    <a href="<c:url value="/search/"/> class="btn btn-primary pull-right">Neue Suche</a>
+    <a href="<c:url value="/search/"/>" class="btn btn-primary pull-right">Neue Suche</a>
 </div>
 
 
