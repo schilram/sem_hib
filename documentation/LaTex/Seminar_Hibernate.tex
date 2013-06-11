@@ -81,7 +81,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \begin{spacing}{1.1}
-
 \maketitle
 \newpage
 % Uncomment the \tableofcontents and \newpage lines to get a Contents page
@@ -90,25 +89,21 @@
 %\setcounter{tocdepth}{1}
 %\tableofcontents
 %\newpage
-
 % When problems are long, it may be desirable to put a \newpage or a
 % \clearpage before each homeworkProblem environment
-
+\pagenumbering{arabic}  % 1, 2, 3, 4, ...
+\setcounter{page}{1}
 \clearpage
 \begin{normalsize}
 \setcounter{tocdepth}{2}
 \tableofcontents
 \end{normalsize}
+
 \input{subdoc/Einleitung}
 \input{subdoc/Projektmanagement}
 \input{subdoc/Einarbeitung}
 \input{subdoc/Anwendung}
-%\input{subdoc/Kontextdiagramm}
-%\input{subdoc/Prozesse}
-%\input{subdoc/Disziplinen}
-%\input{subdoc/IT_Rollen_und_Gremien}
-%\input{subdoc/IT-Kernprozess}
-%\input{subdoc/Plan_KVP}
+
 \listoffigures
 \nocite{*} 
 \bibliography{bib/bib1}{}
