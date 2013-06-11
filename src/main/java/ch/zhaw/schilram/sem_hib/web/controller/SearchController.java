@@ -50,13 +50,6 @@ public class SearchController extends AbstractController {
         final List<Ingredient> ingredients = ingredientService.findAll();
         final SearchForm searchForm = new SearchForm();
 
-//        Ingredient i = new Ingredient();
-//        List<Ingredient> searchList = new ArrayList<>();
-//        searchList.add(i);
-//        searchList.add(i);
-//        searchList.add(i);
-//        searchForm.setIngredients(searchList);
-
         model.addAttribute("searchForm", searchForm);
         model.addAttribute("ingredients", ingredients);
 
