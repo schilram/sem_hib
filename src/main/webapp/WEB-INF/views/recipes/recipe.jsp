@@ -38,7 +38,7 @@
     </c:choose>
 </h3>
 
-<form:form action="/recipes/save" method="put" commandName="recipe" id="recipe_form" cssClass="noprint">
+<form:form action="../recipes/save" method="put" commandName="recipe" id="recipe_form" cssClass="noprint">
 
     <form:hidden path="id"/>
 

@@ -37,7 +37,7 @@
     </c:choose>
 </h3>
 
-<form:form action="/ingredients/save" method="put" commandName="ingredient" id="ingredient_form" cssClass="noprint">
+<form:form action="../ingredients/save" method="put" commandName="ingredient" id="ingredient_form" cssClass="noprint">
     <form:hidden path="id"/>
 
     <div class="row">
