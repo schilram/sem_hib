@@ -38,7 +38,8 @@
     </c:choose>
 </h3>
 
-<form:form action="../recipes/save" method="put" commandName="recipe" id="recipe_form" cssClass="noprint">
+<c:url var="action" value="/recipes/save"/>
+<form:form action="${action}" method="put" commandName="recipe" id="recipe_form" cssClass="noprint">
 
     <form:hidden path="id"/>
 

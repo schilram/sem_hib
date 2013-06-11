@@ -37,7 +37,8 @@
     </c:choose>
 </h3>
 
-<form:form action="../uom/save" method="put" commandName="unitOfMeasure" id="unitOfMeasure_form" cssClass="noprint">
+<c:url var="action" value="/uom/save"/>
+<form:form action="${action}" method="put" commandName="unitOfMeasure" id="unitOfMeasure_form" cssClass="noprint">
     <form:hidden path="id"/>
 
     <div class="row">

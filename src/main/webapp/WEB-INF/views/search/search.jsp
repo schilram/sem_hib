@@ -27,7 +27,8 @@
 
 <h3>Suche nach Rezepten mit Zutaten:</h3>
 
-<form:form action="../search/result" method="post" commandName="searchForm" id="search_form" cssClass="noprint">
+<c:url var="action" value="/search/result"/>
+<form:form action="${action}" method="post" commandName="searchForm" id="search_form" cssClass="noprint">
     <div class="row">
         <div class="span4">
             <div class="control-group <form:errors path="ingredient1">error</form:errors> ">
