@@ -4,6 +4,10 @@
 */.idea/*
 *.iml
 
+# Compiled data
+*/target/
+/target*
+*/target/*
 
 # LaTeX
 *.acn
@@ -38,3 +42,4 @@
 *.vrb
 *.xdy
 *.tdo
+*.bak

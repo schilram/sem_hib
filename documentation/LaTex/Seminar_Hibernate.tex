@@ -1,0 +1,121 @@
+\documentclass[bibliography=numbered,listof=numbered,11pt,a4paper,,oneside,openany,ngerman,plainfootsepline,plainheadsepline]{scrbook}
+% Change "article" to "report" to get rid of page number on title page
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{setspace}
+\usepackage{Tabbing}
+\usepackage{lastpage}
+\usepackage{cite}
+\usepackage{tocbasic}
+\usepackage[automark,						%Automatische Kopfzeile
+						%headtopline,				%Linie über dem Seitenkopf
+						%plainheadtopline,	%Plain, Linie über dem Seitenkopf
+						headsepline,				%Linie zwischen Kopf und Textkörper
+						%plainheadsepline,	%Plain, Linie zwischen Kopf und Textkörper
+						footsepline,				%Linie zwischen Textkörper und Fuß
+						plainfootsepline,   %Plain, Linie zwischen Textkörper und Fuß
+						%footbotline,				%Linie unter dem Fuß
+						%plainfootbotline   %Plain, Linie unter dem Fuß
+						]{scrpage2}
+\usepackage{graphicx,wrapfig}
+%\usepackage[ansinew]{inputenc}
+\usepackage{lmodern}
+\usepackage{scrpage2}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[german=quotes]{csquotes}
+\usepackage{url}
+\usepackage{fouriernc}
+%\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+%\usepackage[T1]{fontenc}
+% In case you need to adjust margins:
+\topmargin=-0.45in      %
+\evensidemargin=0in     %
+\oddsidemargin=0in      %
+\textwidth=6.5in        %
+\textheight=9.0in       %
+\headsep=0.25in         %
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Homework Specific Information
+\newcommand{\hmwkAuthorName}{Ramon Schilling}
+\newcommand{\hmwkTitle}{Seminar Hibernate}
+\newcommand{\hmwkClass}{Seminar Hibernate\\ZHAW - Zürcher Hochschule für Angewandte Wissenschaften}
+\newcommand{\hmwkVersion}{Version 1.0}
+
+                                   %
+\clearscrplain		
+%Alte Plain-Formatierung entfernen
+\clearscrheadfoot
+\cehead{\headmark}    % Chapter auf geraden Seiten (links) in Kopfzeile
+\cohead{\headmark}
+\rehead{\includegraphics[width=50pt]{graphics/logo_zhaw_soe.png}}    % Logo auf geraden Seiten (rechts) in Kopfzeile
+\rohead{\includegraphics[width=50pt]{graphics/logo_zhaw_soe.png}}    % Logo auf ungeraden Seiten (links) in Kopfzeile
+\lehead{\hmwkTitle}    % Section auf geraden Seiten (rechts) in Kopfzeile
+\lohead{\hmwkTitle} 
+
+\lefoot{\hmwkAuthorName}    % Chapter auf geraden Seiten (links) in Kopfzeile
+\lofoot{\hmwkAuthorName}
+\cefoot{\hmwkVersion}
+\cofoot{\hmwkVersion}
+\rofoot{Seite\ \thepage\ von\ \pageref{LastPage}}    % Chaper auf geraden Seiten (links) in Kopfzeile
+\refoot{Seite\ \thepage\ von\ \pageref{LastPage}}
+\setheadsepline{0.4pt}   
+\setfootsepline{0.4pt}                                  %
+\pagestyle{scrheadings}
+\automark[chapter]{chapter}
+ % Seitenstil aktivieren
+\renewcommand{\chapterpagestyle}{scrheadings}
+% This is used to trace down (pin point) problems
+% in latexing a document:
+%\tracingall
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make title
+\title{\vspace{2in}\textmd{\textbf{\ \hmwkTitle}}\\\normalsize\vspace{0.1in}\large{\hmwkClass}\\\vspace{0.1in}\large{\textit{}}\vspace{3in}}
+
+%\author{\textbf{\hmwkAuthorName}}
+\author{\textbf{Ramon Schilling}\\schilram@students.zhaw.ch}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{spacing}{1.1}
+
+\maketitle
+\newpage
+% Uncomment the \tableofcontents and \newpage lines to get a Contents page
+% Uncomment the \setcounter line as well if you do NOT want subsections
+%       listed in Contents
+%\setcounter{tocdepth}{1}
+%\tableofcontents
+%\newpage
+
+% When problems are long, it may be desirable to put a \newpage or a
+% \clearpage before each homeworkProblem environment
+
+\clearpage
+\begin{normalsize}
+\setcounter{tocdepth}{2}
+\tableofcontents
+\end{normalsize}
+\input{subdoc/Einleitung}
+\input{subdoc/Projektmanagement}
+\input{subdoc/Einarbeitung}
+\input{subdoc/Anwendung}
+%\input{subdoc/Kontextdiagramm}
+%\input{subdoc/Prozesse}
+%\input{subdoc/Disziplinen}
+%\input{subdoc/IT_Rollen_und_Gremien}
+%\input{subdoc/IT-Kernprozess}
+%\input{subdoc/Plan_KVP}
+\listoffigures
+\nocite{*} 
+\bibliography{bib/bib1}{}
+\bibliographystyle{plain}
+%\bibliographystyle{alphadin}
+%\bibliographystyle{plain}
+\end{spacing}
+\end{document}
+
+
