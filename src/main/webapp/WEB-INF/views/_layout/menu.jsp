@@ -12,7 +12,7 @@
                 <span class="icon-bar"></span>
             </a>
 
-            <a class="brand" href="/recipes/">Rezepte</a>
+            <a class="brand" href="<c:url value="/recipes/"/>">Rezepte</a>
 
             <div class="nav-collapse">
                 <ul id="navigation" class="nav">

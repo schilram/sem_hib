@@ -34,19 +34,19 @@
     </colgroup>
     <tr>
         <td> 1. Zutaten erfassen</td>
-        <td><a href="/ingredients/">Zu den Zutaten</a></td>
+        <td><a href="<c:url value="/ingredients/"/>">Zu den Zutaten</a></td>
     </tr>
     <tr>
         <td> 2. Masseinheiten erfassen</td>
-        <td><a href="/uom/">Zu den Masseinheiten</a></td>
+        <td><a href="<c:url value="/uom/"/>">Zu den Masseinheiten</a></td>
     </tr>
     <tr>
         <td> 2. Rezepte erfassen</td>
-        <td><a href="/recipes/">Zu den Rezepten</a></td>
+        <td><a href="<c:url value="/recipes/"/>">Zu den Rezepten</a></td>
     </tr>
     <tr>
         <td> 3. Rezepte suchen</td>
-        <td><a href="/search/">Zur Suche</a></td>
+        <td><a href="<c:url value="/search/"/>">Zur Suche</a></td>
     </tr>
 </table>
 

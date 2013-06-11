@@ -47,8 +47,8 @@
                     <td><c:out value="${i.name}" /></td>
                     <td><c:out value="${i.description}" /></td>
                     <td>
-                        <a href="/uom/edit/${i.id}"><i class="icon-pencil">&nbsp;</i></a>&nbsp;&nbsp;
-                        <a href="/uom/delete/${i.id}"><i class="icon-trash">&nbsp;</i></a>&nbsp;&nbsp;
+                        <a href="<c:url value="/uom/edit/${i.id}"/>"><i class="icon-pencil">&nbsp;</i></a>&nbsp;&nbsp;
+                        <a href="<c:url value="/uom/delete/${i.id}"/>"><i class="icon-trash">&nbsp;</i></a>&nbsp;&nbsp;
                     </td>
                 </tr>
             </c:forEach>
@@ -59,7 +59,7 @@
 </div>
 
 <div class="form-actions">
-    <a href="/uom/add" class="btn btn-primary">Masseinheit Hinzufügen <i class="icon-plus icon-white"></i></a>
+    <a href="<c:url value="/uom/add"/>" class="btn btn-primary">Masseinheit Hinzufügen <i class="icon-plus icon-white"></i></a>
 </div>
 
 

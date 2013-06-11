@@ -64,7 +64,7 @@
 
     <div class="form-actions">
 
-        <a href="/uom/" class="btn">Abbrechen</a>
+        <a href="<c:url value="/uom/"/>" class="btn">Abbrechen</a>
 
         <button type="submit" class="btn btn-primary pull-right" id="submit">Speichern &nbsp
             <i class="icon-plus icon-white"></i>

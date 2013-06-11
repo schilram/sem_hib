@@ -46,7 +46,7 @@
                         <td><c:out value="${i.name}" /></td>
                         <td><c:out value="${i.description}" /></td></a>
                         <td>
-                            <a href="/recipes/${i.id}"><i class="icon-zoom-in">&nbsp;</i></a>&nbsp;&nbsp;
+                            <a href="<c:url value="/recipes/${i.id}"/>"><i class="icon-zoom-in">&nbsp;</i></a>&nbsp;&nbsp;
                         </td>
                     </tr>
                 </c:forEach>
@@ -80,7 +80,7 @@
                         <td><c:out value="${i.name}" /></td>
                         <td><c:out value="${i.description}" /></td></a>
                         <td>
-                            <a href="/recipes/${i.id}"><i class="icon-zoom-in">&nbsp;</i></a>&nbsp;&nbsp;
+                            <a href="<c:url value="/recipes/${i.id}"/>"><i class="icon-zoom-in">&nbsp;</i></a>&nbsp;&nbsp;
                         </td>
                     </tr>
                 </c:forEach>
@@ -115,7 +115,7 @@
                         <td><c:out value="${i.name}" /></td>
                         <td><c:out value="${i.description}" /></td></a>
                         <td>
-                            <a href="/recipes/${i.id}"><i class="icon-zoom-in">&nbsp;</i></a>&nbsp;&nbsp;
+                            <a href="<c:url value="/recipes/${i.id}"/>"><i class="icon-zoom-in">&nbsp;</i></a>&nbsp;&nbsp;
                         </td>
                     </tr>
                 </c:forEach>
@@ -127,8 +127,8 @@
 </c:if>
 
 <div class="form-actions">
-    <a href="/recipes/" class="btn">Alle Rezepte</a>
-    <a href="/search/" class="btn btn-primary pull-right">Neue Suche</a>
+    <a href="<c:url value="/recipes/"/>" class="btn">Alle Rezepte</a>
+    <a href="<c:url value="/search/"/> class="btn btn-primary pull-right">Neue Suche</a>
 </div>
 
 

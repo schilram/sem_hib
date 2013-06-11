@@ -47,8 +47,8 @@
                     <td><c:out value="${i.description}" /></td>
                     <td><c:out value="${i.flavour}" /></td>
                     <td>
-                        <a href="/ingredients/edit/${i.id}"><i class="icon-pencil">&nbsp;</i></a>&nbsp;&nbsp;
-                        <a href="/ingredients/delete/${i.id}"><i class="icon-trash">&nbsp;</i></a>&nbsp;&nbsp;
+                        <a href="<c:url value="/ingredients/edit/${i.id}"/>"><i class="icon-pencil">&nbsp;</i></a>&nbsp;&nbsp;
+                        <a href="<c:url value="/ingredients/delete/${i.id}"/>"><i class="icon-trash">&nbsp;</i></a>&nbsp;&nbsp;
                     </td>
                 </tr>
             </c:forEach>
@@ -59,7 +59,7 @@
 </div>
 
 <div class="form-actions">
-    <a href="/ingredients/add" class="btn btn-primary">Zutat Hinzufügen <i class="icon-plus icon-white"></i></a>
+    <a href="<c:url value="/ingredients/add"/>" class="btn btn-primary">Zutat Hinzufügen <i class="icon-plus icon-white"></i></a>
 </div>
 
 
