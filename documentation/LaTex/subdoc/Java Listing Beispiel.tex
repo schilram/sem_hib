@@ -1,0 +1,44 @@
+
+
+\lstset{
+	language=Java,
+	keywordstyle=\color{javapurple}\bfseries,
+	identifierstyle=\ttfamily,
+	stringstyle=\color{javared},
+	commentstyle=\color{javagreen},
+	morecomment=[s][\color{javadocblue}]{/**}{*/},
+	showstringspaces=false,
+	basicstyle=\small,
+	numbers=left,
+	numberstyle=\footnotesize\color{black},
+	stepnumber=1,
+	numbersep=10pt,
+	tabsize=2,
+	breaklines=true,
+	prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+	breakatwhitespace=false,
+	aboveskip={1.5\baselineskip},
+  columns=fixed,
+  upquote=true,
+  extendedchars=true,
+	showspaces=false,
+	showstringspaces=false
+% frame=single,
+% backgroundcolor=\color{lbcolor},
+}
+\begin{lstlisting}
+public static UnitOfMeasure convertForSave(final UnitOfMeasureDto dto) {
+
+	LOGGER.debug("converting Dto to UnitOfMeasure");
+
+	final UnitOfMeasure model = new UnitOfMeasure();
+
+	model.setId(dto.getId());
+	model.setKey(dto.getKey());
+	model.setName(dto.getName());
+	model.setDescription(dto.getDescription());
+
+	return model;
+}
+\end{lstlisting}
+

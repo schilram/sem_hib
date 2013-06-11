@@ -23,7 +23,17 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[german=quotes]{csquotes}
-\usepackage{url}
+
+\usepackage{listings}
+\usepackage{color}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+%\usepackage{url}
+\usepackage{hyperref}
+	\hypersetup{hidelinks=true}
 \usepackage{fouriernc}
 %\usepackage[scaled]{helvet}
 \renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
@@ -103,6 +113,7 @@
 \input{subdoc/Projektmanagement}
 \input{subdoc/Einarbeitung}
 \input{subdoc/Anwendung}
+\input{subdoc/Fazit}
 
 \listoffigures
 \nocite{*} 
