@@ -11,8 +11,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1010
-NormalPos.bottom=651
+NormalPos.right=1066
+NormalPos.bottom=633
 Class=LaTeXView
 Document=Seminar_Hibernate.tex
 
@@ -29,8 +29,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1010
-NormalPos.bottom=651
+NormalPos.right=1066
+NormalPos.bottom=633
 Class=LaTeXView
 Document=subdoc\Einleitung.tex
 
@@ -47,8 +47,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1010
-NormalPos.bottom=651
+NormalPos.right=1066
+NormalPos.bottom=633
 Class=LaTeXView
 Document=subdoc\Einarbeitung.tex
 
@@ -65,13 +65,13 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1010
-NormalPos.bottom=651
+NormalPos.right=1066
+NormalPos.bottom=633
 Class=LaTeXView
 Document=subdoc\Anwendung.tex
 
 [Frame3_View0,0]
-TopLine=157
+TopLine=161
 Cursor=6913
 
 [Frame4]
@@ -83,8 +83,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1010
-NormalPos.bottom=651
+NormalPos.right=1066
+NormalPos.bottom=633
 Class=LaTeXView
 Document=subdoc\Fazit.tex
 
@@ -101,8 +101,8 @@ MaxPos.x=-1
 MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
-NormalPos.right=1010
-NormalPos.bottom=651
+NormalPos.right=1066
+NormalPos.bottom=633
 Class=LaTeXView
 Document=subdoc\Projektmanagement.tex
 

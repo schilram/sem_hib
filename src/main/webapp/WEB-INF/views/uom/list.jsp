@@ -33,7 +33,6 @@
             </colgroup>
             <thead>
             <tr>
-                <th>Id</th>
                 <th>Key</th>
                 <th>Name</th>
                 <th>Beschreibung</th>
